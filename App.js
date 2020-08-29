@@ -15,7 +15,7 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import PreviewScreen from "./app/screens/PreviewScreen";
 
 export default function App() {
-  return <WelcomeScreen></WelcomeScreen>;
+  return <PreviewScreen></PreviewScreen>;
 }
 
 // const styles = StyleSheet.create({

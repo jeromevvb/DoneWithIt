@@ -2,6 +2,8 @@ import React from "react";
 import SafeView from "../components/SafeView";
 import { View, StyleSheet, ImageBackground, Image, Text } from "react-native";
 
+import colors from "../config/colors";
+
 const WelcomeScreen = (props) => {
   return (
     <SafeView>
@@ -42,11 +44,11 @@ const styles = StyleSheet.create({
 
   buttonLogin: {
     height: 70,
-    backgroundColor: "#fc5c65",
+    backgroundColor: colors.primary,
   },
   buttonSignup: {
     height: 70,
-    backgroundColor: "#4ecdc4",
+    backgroundColor: colors.secondary,
   },
 });
 
