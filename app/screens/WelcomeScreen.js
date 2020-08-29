@@ -2,22 +2,21 @@ import React from "react";
 import SafeView from "../components/SafeView";
 import { View, StyleSheet, ImageBackground, Image, Text } from "react-native";
 
-const Login = (props) => {
+const WelcomeScreen = (props) => {
   return (
     <SafeView>
       <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <ImageBackground
-            source={require("../assets/background.jpg")}
-            style={styles.image}
-          >
-            <Image
-              source={require("../assets/logo-red.png")}
-              style={styles.logo}
-            ></Image>
-            <Text>Sell what you don't need</Text>
-          </ImageBackground>
-        </View>
+        <ImageBackground
+          source={require("../assets/background.jpg")}
+          style={styles.image}
+        >
+          <Image
+            source={require("../assets/logo-red.png")}
+            style={styles.logo}
+          ></Image>
+          <Text>Sell what you don't need</Text>
+        </ImageBackground>
+
         <View style={styles.buttonLogin}></View>
         <View style={styles.buttonSignup}></View>
       </View>
@@ -40,17 +39,15 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
   },
-  imageContainer: {
-    flex: 1,
-  },
+
   buttonLogin: {
-    height: 50,
-    backgroundColor: "tomato",
+    height: 70,
+    backgroundColor: "#fc5c65",
   },
   buttonSignup: {
-    height: 50,
-    backgroundColor: "lightgreen",
+    height: 70,
+    backgroundColor: "#4ecdc4",
   },
 });
 
-export default Login;
+export default WelcomeScreen;

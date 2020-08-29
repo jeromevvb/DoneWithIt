@@ -10,15 +10,12 @@ import {
   Dimensions,
   Alert,
 } from "react-native";
-import {
-  useDeviceOrientation,
-  useDimensions,
-} from "@react-native-community/hooks";
 
-import Login from "./views/Login";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import PreviewScreen from "./app/screens/PreviewScreen";
 
 export default function App() {
-  return <Login></Login>;
+  return <WelcomeScreen></WelcomeScreen>;
 }
 
 // const styles = StyleSheet.create({
