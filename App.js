@@ -6,16 +6,16 @@ import {
   View,
   SafeAreaView,
   Image,
-  Button,
   Dimensions,
   Alert,
 } from "react-native";
 
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import PreviewScreen from "./app/screens/PreviewScreen";
+import AppButton from "./app/components/AppButton";
 
 export default function App() {
-  return <PreviewScreen></PreviewScreen>;
+  return <WelcomeScreen>Login</WelcomeScreen>;
 }
 
 // const styles = StyleSheet.create({

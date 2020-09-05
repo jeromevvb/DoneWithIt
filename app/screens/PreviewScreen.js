@@ -2,12 +2,15 @@ import React from "react";
 import SafeView from "../components/SafeView";
 import { View, StyleSheet, Image } from "react-native";
 import colors from "../config/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Preview = (props) => {
   return (
     <SafeView>
       <View style={styles.container}>
-        <View style={styles.closeIcon}></View>
+        <View style={styles.closeIcon}>
+          <MaterialCommunityIcons name="close" size={25} color="white" />
+        </View>
         <Image
           resizeMode="contain"
           source={require("../assets/chair.jpg")}
@@ -34,15 +37,6 @@ const styles = StyleSheet.create({
   image: {
     height: "100%",
     width: "100%",
-  },
-
-  buttonLogin: {
-    height: 50,
-    backgroundColor: "tomato",
-  },
-  buttonSignup: {
-    height: 50,
-    backgroundColor: "lightgreen",
   },
 });
 

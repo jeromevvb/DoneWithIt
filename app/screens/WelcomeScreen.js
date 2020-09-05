@@ -1,54 +1,65 @@
 import React from "react";
 import SafeView from "../components/SafeView";
-import { View, StyleSheet, ImageBackground, Image, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  Text,
+  Button,
+} from "react-native";
 
 import colors from "../config/colors";
+import AppButton from "../components/AppButton";
 
 const WelcomeScreen = (props) => {
   return (
     <SafeView>
-      <View style={styles.container}>
-        <ImageBackground
-          source={require("../assets/background.jpg")}
-          style={styles.image}
-        >
+      <ImageBackground
+        blurRadius={3}
+        source={require("../assets/background.jpg")}
+        style={styles.imageContainer}
+      >
+        <View style={styles.logoContainer}>
           <Image
             source={require("../assets/logo-red.png")}
             style={styles.logo}
-          ></Image>
-          <Text>Sell what you don't need</Text>
-        </ImageBackground>
+          />
+          <Text style={styles.tagLine}>Sell what you don't need</Text>
+        </View>
 
-        <View style={styles.buttonLogin}></View>
-        <View style={styles.buttonSignup}></View>
-      </View>
+        <View style={styles.buttonContainer}>
+          <AppButton title="Login" color="primary" />
+          <AppButton title="Sign Up" color="secondary" />
+        </View>
+      </ImageBackground>
     </SafeView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
+  buttonContainer: {
+    padding: 20,
+    width: "100%",
   },
-  image: {
+  imageContainer: {
     resizeMode: "cover",
     flex: 1,
-    alignItems: "center",
+    flexDirection: "column",
     paddingTop: 50,
+  },
+  tagLine: {
+    fontWeight: "600",
+    paddingVertical: 20,
+    fontSize: 25,
+  },
+  logoContainer: {
+    flex: 1,
+    alignItems: "center",
   },
   logo: {
     width: 50,
     height: 50,
-  },
-
-  buttonLogin: {
-    height: 70,
-    backgroundColor: colors.primary,
-  },
-  buttonSignup: {
-    height: 70,
-    backgroundColor: colors.secondary,
   },
 });
 
