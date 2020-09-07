@@ -12,10 +12,13 @@ import {
 
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import PreviewScreen from "./app/screens/PreviewScreen";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import AppButton from "./app/components/AppButton";
+import Card from "./app/components/Card";
 
 export default function App() {
-  return <WelcomeScreen>Login</WelcomeScreen>;
+  // return <WelcomeScreen>Login</WelcomeScreen>;
+  return <ListingDetailsScreen />;
 }
 
 // const styles = StyleSheet.create({

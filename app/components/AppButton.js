@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { StyleSheet, Platform, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
