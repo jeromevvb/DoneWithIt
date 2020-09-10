@@ -8,8 +8,15 @@ const Preview = (props) => {
   return (
     <SafeView>
       <View style={styles.container}>
+        <View style={styles.deleteIcon}>
+          <MaterialCommunityIcons
+            name="trash-can-outline"
+            size={35}
+            color="white"
+          />
+        </View>
         <View style={styles.closeIcon}>
-          <MaterialCommunityIcons name="close" size={25} color="white" />
+          <MaterialCommunityIcons name="close" size={35} color="white" />
         </View>
         <Image
           resizeMode="contain"
@@ -27,11 +34,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.dark,
   },
   closeIcon: {
-    backgroundColor: colors.primary,
-    height: 30,
-    width: 30,
-    top: 10,
-    right: 10,
+    top: 20,
+    right: 20,
+    position: "absolute",
+  },
+  deleteIcon: {
+    top: 20,
+    left: 20,
     position: "absolute",
   },
   image: {
