@@ -25,16 +25,24 @@ const RenderSwipeable = ({ rightActions, children }) => {
 };
 
 const ListItem = (props) => {
-  const { avatar, title, subtitle, onPress, rightActions } = props;
+  const {
+    avatar,
+    IconComponent,
+    title,
+    subtitle,
+    onPress,
+    rightActions,
+  } = props;
 
   return (
     <RenderSwipeable rightActions={rightActions}>
       <RenderTouchable onPress={onPress}>
         <View style={styles.container}>
-          <Image style={styles.avatar} source={avatar} />
+          {IconComponent}
+          {avatar && <Image style={styles.avatar} source={avatar} />}
           <View style={styles.contentContainer}>
             <AppText>{title}</AppText>
-            <AppText style={styles.subtitle}>{subtitle}</AppText>
+            {subtitle && <AppText style={styles.subtitle}>{subtitle}</AppText>}
           </View>
         </View>
       </RenderTouchable>
@@ -46,20 +54,22 @@ ListItem.defaultProps = {};
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "white",
     flexDirection: "row",
     padding: 15,
+    alignItems: "center",
   },
   avatar: {
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 10,
   },
   subtitle: {
     color: colors.medium,
   },
   contentContainer: {
     flexDirection: "column",
+    marginLeft: 10,
   },
 });
 
