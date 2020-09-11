@@ -2,14 +2,12 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import colors from "../config/colors";
 
-const ListItemSeparator = (props) => {
-  return <View style={styles.separator} />;
+const ListItemSeparator = ({ height = 1 }) => {
+  return <View style={[styles.separator, { height: height }]} />;
 };
 
-ListItemSeparator.defaultProps = {};
-
 const styles = StyleSheet.create({
-  separator: { width: "100%", height: 1, backgroundColor: colors.light },
+  separator: { width: "100%", backgroundColor: colors.light },
 });
 
 export default ListItemSeparator;
