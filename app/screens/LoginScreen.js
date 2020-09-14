@@ -7,7 +7,7 @@ import { AppFormField, SubmitButton, AppForm } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(4).label("Password"),
+  password: Yup.string().required().label("Password"),
 });
 
 const LoginScreen = (props) => {
@@ -16,7 +16,7 @@ const LoginScreen = (props) => {
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <AppForm
         validationSchema={validationSchema}
-        initialValues={{ email: "", password: "" }}
+        initialValues={validationSchema.default()}
         onSubmit={(values) => console.log(values)}
       >
         <AppFormField
