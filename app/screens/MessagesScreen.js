@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import ListItem from "../components/ListItem";
+
 import SafeView from "../components/SafeView";
-import ListItemSeparator from "../components/ListItemSeparator";
-import ListItemAction from "../components/ListItemAction";
+import {
+  ListItemAction,
+  ListItemSeparator,
+  ListItem,
+} from "../components/lists";
 
 const data = [
   {

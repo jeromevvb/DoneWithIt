@@ -1,8 +1,9 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
-import AppText from "./AppText";
-import colors from "../config/colors";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+
+import AppText from "../AppText";
+import colors from "../../config/colors";
 
 const RenderTouchable = ({ onPress, children }) => {
   if (onPress) {
