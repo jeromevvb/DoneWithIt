@@ -3,6 +3,9 @@ import colors from "./colors";
 
 export default {
   colors,
+  textPlaceholder: {
+    color: colors.muted,
+  },
   text: {
     color: colors.dark,
     fontSize: 18,
