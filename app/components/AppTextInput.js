@@ -1,11 +1,11 @@
 import React from "react";
-import { View, StyleSheet, TextInput, Platform } from "react-native";
+import { View, StyleSheet, TextInput } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../config/theme";
 
-const AppTextInput = ({ icon, ...restProps }) => {
+const AppTextInput = ({ icon, error, ...restProps }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.input}>
       {icon && (
         <MaterialCommunityIcons
           name={icon}
@@ -22,14 +22,14 @@ const AppTextInput = ({ icon, ...restProps }) => {
 AppTextInput.defaultProps = {};
 
 const styles = StyleSheet.create({
-  container: {
+  input: {
     backgroundColor: theme.colors.light,
     borderRadius: 25,
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
     padding: 15,
-    marginVertical: 25,
+    marginBottom: 5,
   },
   icon: {
     marginRight: 10,
