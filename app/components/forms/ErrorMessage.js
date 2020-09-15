@@ -1,10 +1,10 @@
 import React from "react";
-import AppText from "../AppText";
+import Text from "../Text";
 
 const ErrorMessage = ({ error }) => {
   if (!error) return null;
 
-  return <AppText color="danger">{error}</AppText>;
+  return <Text color="danger">{error}</Text>;
 };
 
 export default ErrorMessage;

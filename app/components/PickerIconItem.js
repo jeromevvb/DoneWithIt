@@ -1,8 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import AppText from "./AppText";
-import { TouchableHighlight } from "react-native-gesture-handler";
-import theme from "../config/theme";
+import Text from "./Text";
 import Icon from "./Icon";
 
 const PickerIconItem = ({ item, onPress, selected = false }) => {
@@ -11,7 +9,7 @@ const PickerIconItem = ({ item, onPress, selected = false }) => {
       <TouchableOpacity onPress={onPress}>
         <View style={styles.content}>
           <Icon name={item.icon.name} bgColor={item.icon.bgColor} size={60} />
-          <AppText style={styles.text}>{item.label}</AppText>
+          <Text style={styles.text}>{item.label}</Text>
         </View>
       </TouchableOpacity>
     </View>

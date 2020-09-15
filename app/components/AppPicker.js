@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../config/theme";
-import AppText from "./AppText";
+import Text from "./Text";
 import SafeView from "./SafeView";
 import PickerItem from "./PickerItem";
 
@@ -37,11 +37,11 @@ const AppPicker = ({
           )}
 
           {selectedItem && (
-            <AppText style={styles.text}>{selectedItem.label}</AppText>
+            <Text style={styles.text}>{selectedItem.label}</Text>
           )}
 
           {!selectedItem && (
-            <AppText style={styles.placeholderText}>{placeholder}</AppText>
+            <Text style={styles.placeholderText}>{placeholder}</Text>
           )}
 
           <MaterialCommunityIcons
@@ -55,7 +55,7 @@ const AppPicker = ({
         <SafeView padding>
           <View style={styles.close}>
             {/* <MaterialCommunityIcons name="window-close" size={30} /> */}
-            <AppText>OK</AppText>
+            <Text>OK</Text>
           </View>
           <FlatList
             numColumns={numberOfColumns}

@@ -1,13 +1,13 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import AppText from "./AppText";
+import Text from "./Text";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const PickerItem = ({ item, onPress, selected = false }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
-        <AppText style={styles.text}>{item.label}</AppText>
+        <Text style={styles.text}>{item.label}</Text>
         {selected && <MaterialCommunityIcons name="check" size={20} />}
       </View>
     </TouchableOpacity>

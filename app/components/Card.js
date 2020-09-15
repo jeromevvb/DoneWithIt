@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import colors from "../config/colors";
-import AppText from "./AppText";
+import Text from "./Text";
 
 const Card = (props) => {
   const { title, subtitle, image } = props;
@@ -10,12 +10,12 @@ const Card = (props) => {
     <View style={styles.card}>
       <Image style={styles.image} source={image} />
       <View style={styles.content}>
-        <AppText numberOfLines={1} style={styles.title}>
+        <Text numberOfLines={1} style={styles.title}>
           {title}
-        </AppText>
-        <AppText numberOfLines={3} style={styles.subtitle}>
+        </Text>
+        <Text numberOfLines={3} style={styles.subtitle}>
           {subtitle}
-        </AppText>
+        </Text>
       </View>
     </View>
   );

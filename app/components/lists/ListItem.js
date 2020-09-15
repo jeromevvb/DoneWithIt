@@ -3,7 +3,7 @@ import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import AppText from "../AppText";
+import Text from "../Text";
 import colors from "../../config/colors";
 
 const RenderTouchable = ({ onPress, children }) => {
@@ -44,11 +44,11 @@ const ListItem = (props) => {
           {IconComponent}
           {avatar && <Image style={styles.avatar} source={avatar} />}
           <View style={styles.contentContainer}>
-            <AppText numberOfLines={1}>{title}</AppText>
+            <Text numberOfLines={1}>{title}</Text>
             {subtitle && (
-              <AppText numberOfLines={2} style={styles.subtitle}>
+              <Text numberOfLines={2} style={styles.subtitle}>
                 {subtitle}
-              </AppText>
+              </Text>
             )}
           </View>
           {showChevron && (
