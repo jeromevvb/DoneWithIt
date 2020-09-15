@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
-import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import { Form, AppFormField, SubmitButton } from "../components/forms";
 import AppFormPicker from "../components/forms/AppFormPicker";
 import PickerIconItem from "../components/PickerIconItem";
 
@@ -60,7 +60,7 @@ const categories = [
 const ListingEditScreen = (props) => {
   return (
     <SafeView padding>
-      <AppForm
+      <Form
         validationSchema={validationSchema}
         initialValues={validationSchema.default()}
         onSubmit={(values) => console.log(values)}
@@ -90,8 +90,8 @@ const ListingEditScreen = (props) => {
           textAlignVertical="top"
         />
 
-        <SubmitButton title="Register" />
-      </AppForm>
+        <SubmitButton title="Create" />
+      </Form>
     </SafeView>
   );
 };

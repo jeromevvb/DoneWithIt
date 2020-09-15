@@ -3,7 +3,7 @@ import { StyleSheet, Image } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
 
-import { AppFormField, SubmitButton, AppForm } from "../components/forms";
+import { AppFormField, SubmitButton, Form } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -14,7 +14,7 @@ const LoginScreen = (props) => {
   return (
     <SafeView padding>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
-      <AppForm
+      <Form
         validationSchema={validationSchema}
         initialValues={validationSchema.default()}
         onSubmit={(values) => console.log(values)}
@@ -44,7 +44,7 @@ const LoginScreen = (props) => {
         />
 
         <SubmitButton title="Login" />
-      </AppForm>
+      </Form>
     </SafeView>
   );
 };
