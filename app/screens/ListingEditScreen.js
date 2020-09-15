@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
 import { Form, FormField, SubmitButton, FormPicker } from "../components/forms";
-import PickerIconItem from "../components/PickerIconItem";
+import { PickerIconItem } from "../components/picker";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),

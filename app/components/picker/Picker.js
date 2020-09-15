@@ -7,9 +7,9 @@ import {
   FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import theme from "../config/theme";
-import Text from "./Text";
-import SafeView from "./SafeView";
+import theme from "../../config/theme";
+import Text from "../Text";
+import SafeView from "../SafeView";
 import PickerItem from "./PickerItem";
 
 const AppPicker = ({

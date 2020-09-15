@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import Text from "./Text";
-import Icon from "./Icon";
+import Text from "../Text";
+import Icon from "../Icon";
 
 const PickerIconItem = ({ item, onPress, selected = false }) => {
   return (
