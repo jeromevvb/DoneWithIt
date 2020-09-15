@@ -1,16 +1,7 @@
 import React from "react";
 import SafeView from "../components/SafeView";
-import {
-  View,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  Text,
-  Button,
-} from "react-native";
-
-import colors from "../config/colors";
-import AppButton from "../components/AppButton";
+import { View, StyleSheet, ImageBackground, Image, Text } from "react-native";
+import Button from "../components/Button";
 
 const WelcomeScreen = (props) => {
   return (
@@ -29,8 +20,8 @@ const WelcomeScreen = (props) => {
         </View>
 
         <View style={styles.buttonContainer}>
-          <AppButton title="Login" color="primary" />
-          <AppButton title="Sign Up" color="secondary" />
+          <Button title="Login" color="primary" />
+          <Button title="Sign Up" color="secondary" />
         </View>
       </ImageBackground>
     </SafeView>
