@@ -2,8 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
-import { Form, FormField, SubmitButton } from "../components/forms";
-import AppFormPicker from "../components/forms/AppFormPicker";
+import { Form, FormField, SubmitButton, FormPicker } from "../components/forms";
 import PickerIconItem from "../components/PickerIconItem";
 
 const validationSchema = Yup.object().shape({
@@ -74,7 +73,7 @@ const ListingEditScreen = (props) => {
           keyboardType="numeric"
         />
 
-        <AppFormPicker
+        <FormPicker
           name="category"
           placeholder="Category"
           items={categories}
