@@ -2,7 +2,7 @@ import React from "react";
 import { useFormikContext } from "formik";
 import { View, StyleSheet } from "react-native";
 
-import AppPicker from "../AppPicker";
+import Picker from "../Picker";
 import ErrorMessage from "./ErrorMessage";
 
 const AppFormPicker = ({ name, items, ...restProps }) => {
@@ -10,7 +10,7 @@ const AppFormPicker = ({ name, items, ...restProps }) => {
 
   return (
     <View style={styles.container}>
-      <AppPicker
+      <Picker
         items={items}
         onSelectItem={(item) => setFieldValue(name, item)}
         selectedItem={values[name]}
