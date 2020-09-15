@@ -15,6 +15,8 @@ import PickerItem from "./PickerItem";
 const AppPicker = ({
   icon,
   items,
+  numberOfColumns = 1,
+  PickerItemComponent = PickerItem,
   onSelectItem = () => {},
   selectedItem,
   placeholder,
@@ -56,11 +58,12 @@ const AppPicker = ({
             <AppText>OK</AppText>
           </View>
           <FlatList
+            numColumns={numberOfColumns}
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
-                label={item.label}
+              <PickerItemComponent
+                item={item}
                 selected={
                   selectedItem ? selectedItem.value === item.value : false
                 }

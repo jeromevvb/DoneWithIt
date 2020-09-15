@@ -2,17 +2,15 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import AppText from "./AppText";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableHighlight } from "react-native-gesture-handler";
-import theme from "../config/theme";
 
-const PickerItem = ({ label, onPress, selected = false }) => {
+const PickerItem = ({ item, onPress, selected = false }) => {
   return (
-    <TouchableHighlight underlayColor={theme.colors.light} onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
-        <AppText style={styles.text}>{label}</AppText>
+        <AppText style={styles.text}>{item.label}</AppText>
         {selected && <MaterialCommunityIcons name="check" size={20} />}
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 
@@ -23,7 +21,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     paddingVertical: 15,
-    // paddingHorizontal: 20,
     alignItems: "center",
   },
 });

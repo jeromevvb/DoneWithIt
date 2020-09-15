@@ -4,6 +4,7 @@ import SafeView from "../components/SafeView";
 import * as Yup from "yup";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 import AppFormPicker from "../components/forms/AppFormPicker";
+import PickerIconItem from "../components/PickerIconItem";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -13,9 +14,47 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-  { label: "Funiture", value: "furniture" },
-  { label: "Clothing", value: "clothing" },
-  { label: "Cameras", value: "camera" },
+  {
+    label: "Funiture",
+    value: "furniture",
+    icon: { name: "floor-lamp", bgColor: "#fc5c65" },
+  },
+  {
+    label: "Clothing",
+    value: "clothing",
+    icon: { name: "shoe-heel", bgColor: "#2bcbba" },
+  },
+  {
+    label: "Cameras",
+    value: "camera",
+    icon: { name: "camera", bgColor: "#fed330" },
+  },
+  { label: "Cars", value: "cars", icon: { name: "car", bgColor: "#fd9644" } },
+  {
+    label: "Games",
+    value: "games",
+    icon: { name: "cards", bgColor: "#26de81" },
+  },
+  {
+    label: "Sports",
+    value: "sports",
+    icon: { name: "basketball", bgColor: "#45aaf2" },
+  },
+  {
+    label: "Movies and music",
+    value: "movies",
+    icon: { name: "headphones", bgColor: "#4b7bec" },
+  },
+  {
+    label: "Books",
+    value: "book",
+    icon: { name: "book-open", bgColor: "#9B68E2" },
+  },
+  {
+    label: "other",
+    value: "other",
+    icon: { name: "application", bgColor: "#7C8CA1" },
+  },
 ];
 
 const ListingEditScreen = (props) => {
@@ -39,6 +78,8 @@ const ListingEditScreen = (props) => {
           name="category"
           placeholder="Category"
           items={categories}
+          PickerItemComponent={PickerIconItem}
+          numberOfColumns={3}
         />
 
         <AppFormField
