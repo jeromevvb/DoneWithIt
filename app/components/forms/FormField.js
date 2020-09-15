@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useFormikContext } from "formik";
 import { View, StyleSheet } from "react-native";
 
-import AppTextInput from "../AppTextInput";
+import TextInput from "../TextInput";
 import ErrorMessage from "./ErrorMessage";
 
 const FormField = ({ name, ...restProps }) => {
@@ -10,7 +10,7 @@ const FormField = ({ name, ...restProps }) => {
 
   return (
     <View style={styles.container}>
-      <AppTextInput
+      <TextInput
         onChangeText={handleChange(name)}
         onBlur={handleBlur(name)}
         {...restProps}
