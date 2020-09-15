@@ -5,7 +5,7 @@ import { View, StyleSheet } from "react-native";
 import AppTextInput from "../AppTextInput";
 import ErrorMessage from "./ErrorMessage";
 
-const AppFormField = ({ name, ...restProps }) => {
+const FormField = ({ name, ...restProps }) => {
   const { handleChange, handleBlur, touched, errors } = useFormikContext();
 
   return (
@@ -24,7 +24,7 @@ const AppFormField = ({ name, ...restProps }) => {
   );
 };
 
-AppFormField.defaultProps = {};
+FormField.defaultProps = {};
 
 const styles = StyleSheet.create({
   container: {
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppFormField;
+export default FormField;

@@ -1,7 +1,7 @@
 import React from "react";
 import * as Yup from "yup";
 import SafeView from "../components/SafeView";
-import { Form, AppFormField, SubmitButton } from "../components/forms";
+import { Form, FormField, SubmitButton } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -17,9 +17,9 @@ const RegisterScreen = (props) => {
         initialValues={validationSchema.default()}
         onSubmit={() => {}}
       >
-        <AppFormField name="name" icon="account" placeholder="Name" />
+        <FormField name="name" icon="account" placeholder="Name" />
 
-        <AppFormField
+        <FormField
           name="email"
           icon="email"
           placeholder="Email"
@@ -29,7 +29,7 @@ const RegisterScreen = (props) => {
           textContentType="emailAddress"
         />
 
-        <AppFormField
+        <FormField
           name="password"
           icon="lock"
           placeholder="Password"

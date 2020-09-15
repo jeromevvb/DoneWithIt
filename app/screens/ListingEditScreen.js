@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
-import { Form, AppFormField, SubmitButton } from "../components/forms";
+import { Form, FormField, SubmitButton } from "../components/forms";
 import AppFormPicker from "../components/forms/AppFormPicker";
 import PickerIconItem from "../components/PickerIconItem";
 
@@ -65,9 +65,9 @@ const ListingEditScreen = (props) => {
         initialValues={validationSchema.default()}
         onSubmit={(values) => console.log(values)}
       >
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
+        <FormField maxLength={255} name="title" placeholder="Title" />
 
-        <AppFormField
+        <FormField
           maxLength={8}
           name="price"
           placeholder="Price"
@@ -82,7 +82,7 @@ const ListingEditScreen = (props) => {
           numberOfColumns={3}
         />
 
-        <AppFormField
+        <FormField
           name="description"
           placeholder="Description"
           multiline
