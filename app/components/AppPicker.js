@@ -50,7 +50,11 @@ const AppPicker = ({
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={visibleModal} animationType="slide">
-        <SafeView>
+        <SafeView padding>
+          <View style={styles.close}>
+            {/* <MaterialCommunityIcons name="window-close" size={30} /> */}
+            <AppText>OK</AppText>
+          </View>
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
@@ -88,6 +92,9 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+  },
+  close: {
+    alignSelf: "flex-end",
   },
   placeholderText: {
     flex: 1,

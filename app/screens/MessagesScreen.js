@@ -17,8 +17,10 @@ const data = [
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac imperdiet turpis, egestas commodo ante. Nulla elementum suscipit justo sit amet feugiat. Nulla pulvinar maximus sollicitudin. Vivamus lobortis, eros eget mollis mollis, risus sem ornare erat, a viverra mi libero ut leo. Praesent aliquet ac arcu non cursus. Cras eget posuere mi, eu suscipit ipsum. Ut fringilla at justo dictum ultrices. Nulla lobortis augue eu nunc commodo porta. Praesent vitae turpis elementum, hendrerit tellus eget, efficitur magna. Nulla id volutpat magna.",
+    description:
+      "Nam condimentum lorem eros, eu interdum lorem condimentum vel. Phasellus congue, augue eget varius placerat, nisi elit laoreet nisl, ut molestie dolor tortor vitae tellus. Etiam vestibulum justo in eros aliquet pretium ut eu lorem. Nullam sit amet molestie purus. Donec vestibulum non augue eu viverra. Sed pulvinar rutrum risus. Aenean placerat odio in metus volutpat egestas.",
     image: require("../assets/avatar.jpg"),
   },
 ];

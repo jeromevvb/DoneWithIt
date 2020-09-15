@@ -10,12 +10,16 @@ import Constants from "expo-constants";
 import colors from "../config/colors";
 
 const SafeView = ({ children, bgColor, padding = false }) => {
-  const innerStyles = [styles.container, { backgroundColor: bgColor }];
+  const innerStyles = [
+    styles.fullHeight,
+    styles.container,
+    { backgroundColor: bgColor },
+  ];
   const paddingStyles = padding ? { padding: 20 } : {};
 
   return (
     <SafeAreaView style={innerStyles}>
-      <View style={paddingStyles}>{children}</View>
+      <View style={[styles.fullHeight, paddingStyles]}>{children}</View>
     </SafeAreaView>
   );
 };
@@ -25,8 +29,10 @@ SafeView.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  fullHeight: {
     flex: 1,
+  },
+  container: {
     paddingTop: Constants.statusBarHeight,
   },
 });

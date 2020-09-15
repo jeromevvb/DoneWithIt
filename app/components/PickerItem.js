@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: "row",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 15,
+    // paddingHorizontal: 20,
     alignItems: "center",
   },
 });
