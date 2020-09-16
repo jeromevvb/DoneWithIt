@@ -7,17 +7,18 @@ import {
 
 import ListingScreen from "../screens/ListingScreen";
 import ListingDetailsScreen from "../screens/ListingDetailsScreen";
+import routes from "./routes";
 
 const Stack = createStackNavigator();
 
 const ListingNavigator = () => (
   <Stack.Navigator
-    initialRouteName="Listing"
+    initialRouteName={routes.LISTING}
     screenOptions={{ headerShown: false }}
   >
-    <Stack.Screen name="Listing" component={ListingScreen} />
+    <Stack.Screen name={routes.LISTING} component={ListingScreen} />
     <Stack.Screen
-      name="ListingDetails"
+      name={routes.LISTING_DETAILS}
       component={ListingDetailsScreen}
       options={{ ...TransitionPresets.ModalTransition }}
     />

@@ -3,6 +3,7 @@ import { View, StyleSheet, FlatList } from "react-native";
 import Card from "../components/Card";
 import SafeView from "../components/SafeView";
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 
 const data = [
   {
@@ -21,7 +22,7 @@ const data = [
 
 const ListingScreen = ({ navigation }) => {
   const handlePress = (item) => {
-    navigation.navigate("ListingDetails", item);
+    navigation.navigate(routes.LISTING_DETAILS, item);
   };
 
   return (

@@ -4,13 +4,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import AccountScreen from "../screens/AccountScreen";
 import MessagesScreen from "../screens/MessagesScreen";
+import routes from "./routes";
 
 const Stack = createStackNavigator();
 
 const MyAccountNavigator = () => (
-  <Stack.Navigator initialRouteName="MyAccount">
-    <Stack.Screen name="MyAccount" component={AccountScreen} />
-    <Stack.Screen name="Messages" component={MessagesScreen} />
+  <Stack.Navigator initialRouteName={routes.ACCOUNT}>
+    <Stack.Screen name={routes.ACCOUNT} component={AccountScreen} />
+    <Stack.Screen name={routes.MESSAGES} component={MessagesScreen} />
   </Stack.Navigator>
 );
 

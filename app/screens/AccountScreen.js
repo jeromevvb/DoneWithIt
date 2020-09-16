@@ -4,11 +4,12 @@ import SafeView from "../components/SafeView";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import { ListItemSeparator, ListItem } from "../components/lists";
+import routes from "../navigation/routes";
 
 const menuItems = [
   {
     title: "My listing",
-    route: "MyListing",
+    route: routes.MY_LISTING,
     icon: {
       name: "format-list-bulleted",
       bgColor: colors.primary,
@@ -16,7 +17,7 @@ const menuItems = [
   },
   {
     title: "My messages",
-    route: "Messages",
+    route: routes.MESSAGES,
     icon: {
       name: "email",
       bgColor: colors.secondary,

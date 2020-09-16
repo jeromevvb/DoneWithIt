@@ -9,7 +9,7 @@ import theme from "../config/theme";
 import AccountNavigator from "./AccountNavigator";
 import ListingNavigator from "./ListingNavigator";
 import NewListingButton from "./NewListingButton";
-import { TransitionPresets } from "@react-navigation/stack";
+import routes from "./routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ const TabsNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="Listing"
+        name={routes.LISTING}
         component={ListingNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
@@ -30,19 +30,18 @@ const TabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="ListingEdit"
+        name={routes.LISTING_EDIT}
         component={ListingEditScreen}
         options={({ navigation }) => ({
-          ...TransitionPresets.ModalTransition,
           tabBarButton: () => (
             <NewListingButton
-              onPress={() => navigation.navigate("ListingEdit")}
+              onPress={() => navigation.navigate(routes.LISTING_EDIT)}
             />
           ),
         })}
       />
       <Tab.Screen
-        name="Account"
+        name={routes.ACCOUNT}
         component={AccountNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
