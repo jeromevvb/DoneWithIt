@@ -16,7 +16,7 @@ const ListingNavigator = () => (
     <Stack.Screen
       name="ListingDetails"
       component={ListingDetailsScreen}
-      options={{ ...TransitionPresets.ModalTransition }}
+      options={{ ...TransitionPresets.ModalTransition, headerShown: false }}
     />
   </Stack.Navigator>
 );

@@ -8,20 +8,20 @@ const data = [
   {
     id: 1,
     title: "Red jacket for sale",
-    subtitle: "$100",
+    price: 100,
     image: require("../assets/jacket.jpg"),
   },
   {
     id: 2,
     title: "Couch in great conditions",
-    subtitle: "$299",
+    price: 299,
     image: require("../assets/couch.jpg"),
   },
 ];
 
 const ListingScreen = ({ navigation }) => {
   const handlePress = (item) => {
-    navigation.navigate("ListingDetails", { id: item.id });
+    navigation.navigate("ListingDetails", item);
   };
 
   return (
@@ -30,7 +30,12 @@ const ListingScreen = ({ navigation }) => {
         data={data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Card onPress={() => handlePress(item)} {...item} />
+          <Card
+            title={item.title}
+            subtitle={`$${item.price}`}
+            onPress={() => handlePress(item)}
+            {...item}
+          />
         )}
       />
     </SafeView>
