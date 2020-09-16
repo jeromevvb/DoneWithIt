@@ -15,7 +15,7 @@ const ImageListInput = ({
   };
 
   const imagesComponents = imagesUris.map((imageUri) => (
-    <View style={styles.imageContainer}>
+    <View style={styles.imageContainer} key={imageUri}>
       <ImageInput
         onSelectImage={() => onRemoveImage(imageUri)}
         imageUri={imageUri}

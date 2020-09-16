@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
 import { Form, FormField, SubmitButton, FormPicker } from "../components/forms";
 import { PickerIconItem } from "../components/picker";
 import FormImagePicker from "../components/forms/FormImagePicker";
-
-import * as Location from "expo-location";
-import * as Permissions from "expo-permissions";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -62,20 +60,9 @@ const categories = [
 ];
 
 const ListingEditScreen = (props) => {
-  useEffect(() => {
-    const requestPermission = async () => {
-      const { granted } = Permissions.askAsync(Permissions.LOCATION);
+  const location = useLocation();
 
-      if (!granted) return;
-
-      // for perfomance reasons, its better to get the last know position
-      const {
-        coords: { latitude, longitude },
-      } = Location.getLastKnownPositionAsync();
-    };
-
-    requestPermission();
-  }, []);
+  console.log(location);
 
   return (
     <SafeView padding>
