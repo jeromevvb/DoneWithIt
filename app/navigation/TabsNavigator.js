@@ -8,6 +8,8 @@ import ListingEditScreen from "../screens/ListingEditScreen";
 import theme from "../config/theme";
 import AccountNavigator from "./AccountNavigator";
 import ListingNavigator from "./ListingNavigator";
+import NewListingButton from "./NewListingButton";
+import { TransitionPresets } from "@react-navigation/stack";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,29 +32,14 @@ const TabsNavigator = () => {
       <Tab.Screen
         name="ListingEdit"
         component={ListingEditScreen}
-        options={{
+        options={({ navigation }) => ({
+          ...TransitionPresets.ModalTransition,
           tabBarButton: () => (
-            <View
-              style={{
-                top: -15,
-                backgroundColor: theme.colors.primary,
-                borderRadius: 30,
-                width: 55,
-                height: 55,
-                justifyContent: "center",
-                alignItems: "center",
-                borderColor: theme.colors.white,
-                borderWidth: 4,
-              }}
-            >
-              <MaterialCommunityIcons
-                size={30}
-                name="plus-circle"
-                color={theme.colors.white}
-              />
-            </View>
+            <NewListingButton
+              onPress={() => navigation.navigate("ListingEdit")}
+            />
           ),
-        }}
+        })}
       />
       <Tab.Screen
         name="Account"

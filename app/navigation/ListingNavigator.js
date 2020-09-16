@@ -11,12 +11,15 @@ import ListingDetailsScreen from "../screens/ListingDetailsScreen";
 const Stack = createStackNavigator();
 
 const ListingNavigator = () => (
-  <Stack.Navigator initialRouteName="Listing">
+  <Stack.Navigator
+    initialRouteName="Listing"
+    screenOptions={{ headerShown: false }}
+  >
     <Stack.Screen name="Listing" component={ListingScreen} />
     <Stack.Screen
       name="ListingDetails"
       component={ListingDetailsScreen}
-      options={{ ...TransitionPresets.ModalTransition, headerShown: false }}
+      options={{ ...TransitionPresets.ModalTransition }}
     />
   </Stack.Navigator>
 );
