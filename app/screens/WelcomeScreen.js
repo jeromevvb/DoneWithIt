@@ -3,28 +3,31 @@ import SafeView from "../components/SafeView";
 import { View, StyleSheet, ImageBackground, Image, Text } from "react-native";
 import Button from "../components/Button";
 
-const WelcomeScreen = (props) => {
+const WelcomeScreen = ({ navigation }) => {
   return (
-    <SafeView>
-      <ImageBackground
-        blurRadius={3}
-        source={require("../assets/background.jpg")}
-        style={styles.imageContainer}
-      >
-        <View style={styles.logoContainer}>
-          <Image
-            source={require("../assets/logo-red.png")}
-            style={styles.logo}
-          />
-          <Text style={styles.tagLine}>Sell what you don't need</Text>
-        </View>
+    <ImageBackground
+      blurRadius={3}
+      source={require("../assets/background.jpg")}
+      style={styles.imageContainer}
+    >
+      <View style={styles.logoContainer}>
+        <Image source={require("../assets/logo-red.png")} style={styles.logo} />
+        <Text style={styles.tagLine}>Sell what you don't need</Text>
+      </View>
 
-        <View style={styles.buttonContainer}>
-          <Button title="Login" color="primary" />
-          <Button title="Sign Up" color="secondary" />
-        </View>
-      </ImageBackground>
-    </SafeView>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Login"
+          color="primary"
+          onPress={() => navigation.navigate("Login")}
+        />
+        <Button
+          title="Sign Up"
+          color="secondary"
+          onPress={() => navigation.navigate("Register")}
+        />
+      </View>
+    </ImageBackground>
   );
 };
 

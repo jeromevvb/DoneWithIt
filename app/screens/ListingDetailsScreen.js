@@ -1,8 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
-import SafeView from "../components/SafeView";
 import Text from "../components/Text";
-import ListItem from "../components/ListItem";
+import { ListItem } from "../components/lists";
 
 const ListingDetailsScreen = (props) => {
   return (

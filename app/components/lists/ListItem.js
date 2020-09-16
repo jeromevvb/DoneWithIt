@@ -5,18 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Text from "../Text";
 import colors from "../../config/colors";
-
-const RenderTouchable = ({ onPress, children }) => {
-  if (onPress) {
-    return (
-      <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
-        {children}
-      </TouchableHighlight>
-    );
-  }
-
-  return children;
-};
+import Touchable from "../Touchable";
 
 const RenderSwipeable = ({ rightActions, children }) => {
   if (rightActions) {
@@ -39,7 +28,7 @@ const ListItem = (props) => {
 
   return (
     <RenderSwipeable rightActions={rightActions}>
-      <RenderTouchable onPress={onPress}>
+      <Touchable onPress={onPress} type="highlight">
         <View style={styles.container}>
           {IconComponent}
           {avatar && <Image style={styles.avatar} source={avatar} />}
@@ -55,7 +44,7 @@ const ListItem = (props) => {
             <MaterialCommunityIcons name="chevron-right" size={25} />
           )}
         </View>
-      </RenderTouchable>
+      </Touchable>
     </RenderSwipeable>
   );
 };

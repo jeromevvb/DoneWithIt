@@ -19,13 +19,19 @@ const data = [
   },
 ];
 
-const ListingScreen = (props) => {
+const ListingScreen = ({ navigation }) => {
+  const handlePress = (item) => {
+    navigation.navigate("ListingDetails", { id: item.id });
+  };
+
   return (
     <SafeView padding bgColor={colors.light}>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <Card {...item} />}
+        renderItem={({ item }) => (
+          <Card onPress={() => handlePress(item)} {...item} />
+        )}
       />
     </SafeView>
   );

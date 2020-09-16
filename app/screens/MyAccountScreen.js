@@ -2,13 +2,13 @@ import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import SafeView from "../components/SafeView";
 import colors from "../config/colors";
-import ListItem from "../components/ListItem";
 import Icon from "../components/Icon";
-import ListItemSeparator from "../components/ListItemSeparator";
+import { ListItemSeparator, ListItem } from "../components/lists";
 
 const menuItems = [
   {
     title: "My listing",
+    route: "MyListing",
     icon: {
       name: "format-list-bulleted",
       bgColor: colors.primary,
@@ -16,6 +16,7 @@ const menuItems = [
   },
   {
     title: "My messages",
+    route: "Messages",
     icon: {
       name: "email",
       bgColor: colors.secondary,
@@ -23,7 +24,7 @@ const menuItems = [
   },
 ];
 
-const MyAccountScreen = (props) => {
+const MyAccountScreen = ({ navigation }) => {
   return (
     <SafeView bgColor={colors.light}>
       <View style={styles.container}>
@@ -41,6 +42,8 @@ const MyAccountScreen = (props) => {
           renderItem={({ item }) => {
             return (
               <ListItem
+                onPress={() => navigation.navigate(item.route)}
+                showChevron
                 title={item.title}
                 IconComponent={<Icon {...item.icon} />}
               />
