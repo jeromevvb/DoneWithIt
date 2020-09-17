@@ -1,24 +1,11 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
+import listingsApi from "../api/listings";
 import Card from "../components/Card";
+import Fetch from "../components/Fetch";
 import SafeView from "../components/SafeView";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
-
-const data = [
-  {
-    id: 1,
-    title: "Red jacket for sale",
-    price: 100,
-    image: require("../assets/jacket.jpg"),
-  },
-  {
-    id: 2,
-    title: "Couch in great conditions",
-    price: 299,
-    image: require("../assets/couch.jpg"),
-  },
-];
 
 const ListingScreen = ({ navigation }) => {
   const handlePress = (item) => {
@@ -27,22 +14,32 @@ const ListingScreen = ({ navigation }) => {
 
   return (
     <SafeView padding bgColor={colors.light}>
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subtitle={`$${item.price}`}
-            onPress={() => handlePress(item)}
-            {...item}
+      <Fetch apiRequest={listingsApi.getListings}>
+        {(data) => (
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <View key={item.id} style={styles.container}>
+                <Card
+                  title={item.title}
+                  subtitle={`$${item.price}`}
+                  imageUrl={item.images[0].url}
+                  onPress={() => handlePress(item)}
+                />
+              </View>
+            )}
           />
         )}
-      />
+      </Fetch>
     </SafeView>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: 20,
+  },
+});
 
 export default ListingScreen;

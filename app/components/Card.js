@@ -5,12 +5,12 @@ import Text from "./Text";
 import Touchable from "./Touchable";
 
 const Card = (props) => {
-  const { title, subtitle, onPress, image } = props;
+  const { title, subtitle, onPress, imageUrl } = props;
 
   return (
     <Touchable onPress={onPress}>
       <View style={styles.card}>
-        <Image style={styles.image} source={image} />
+        <Image style={styles.image} source={{ uri: imageUrl }} />
         <View style={styles.content}>
           <Text numberOfLines={1} style={styles.title}>
             {title}
