@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
@@ -6,10 +6,12 @@ import { Form, FormField, SubmitButton, FormPicker } from "../components/forms";
 import { PickerIconItem } from "../components/picker";
 import FormImagePicker from "../components/forms/FormImagePicker";
 import useLocation from "../hooks/useLocation";
+import listingsApi from "../api/listings";
+import UploadScreen from "./UploadScreen";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
-  pictures: Yup.array().min(1, "Please select at least one image").ensure(),
+  images: Yup.array().min(1, "Please select at least one image").ensure(),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   category: Yup.object().required().label("Category").nullable(),
   description: Yup.string().min(10).label("Description"),
@@ -18,60 +20,74 @@ const validationSchema = Yup.object().shape({
 const categories = [
   {
     label: "Funiture",
-    value: "furniture",
+    value: 1,
     icon: { name: "floor-lamp", bgColor: "#fc5c65" },
   },
   {
     label: "Clothing",
-    value: "clothing",
+    value: 5,
     icon: { name: "shoe-heel", bgColor: "#2bcbba" },
   },
   {
     label: "Cameras",
-    value: "camera",
+    value: 3,
     icon: { name: "camera", bgColor: "#fed330" },
   },
-  { label: "Cars", value: "cars", icon: { name: "car", bgColor: "#fd9644" } },
+  { label: "Cars", value: 2, icon: { name: "car", bgColor: "#fd9644" } },
   {
     label: "Games",
-    value: "games",
+    value: 4,
     icon: { name: "cards", bgColor: "#26de81" },
   },
   {
     label: "Sports",
-    value: "sports",
+    value: 6,
     icon: { name: "basketball", bgColor: "#45aaf2" },
   },
   {
     label: "Movies and music",
-    value: "movies",
+    value: 7,
     icon: { name: "headphones", bgColor: "#4b7bec" },
   },
   {
     label: "Books",
-    value: "book",
+    value: 8,
     icon: { name: "book-open", bgColor: "#9B68E2" },
   },
   {
-    label: "other",
-    value: "other",
+    label: "Other",
+    value: 9,
     icon: { name: "application", bgColor: "#7C8CA1" },
   },
 ];
 
-const ListingEditScreen = (props) => {
+const ListingEditScreen = () => {
   const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
-  console.log(location);
+  const handleSubmit = async (form) => {
+    setUploadVisible(true);
+    const response = await listingsApi.postListing(
+      { form, location },
+      (progress) => setUploadProgress(progress)
+    );
+    setUploadVisible(false);
+
+    if (!response.ok) return alert("Couldn't add new listing");
+
+    console.log("Response", response);
+  };
 
   return (
     <SafeView padding>
+      <UploadScreen progress={uploadProgress} visible={uploadVisible} />
       <Form
         validationSchema={validationSchema}
         initialValues={validationSchema.default()}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
       >
-        <FormImagePicker name="pictures" />
+        <FormImagePicker name="images" />
 
         <FormField maxLength={255} name="title" placeholder="Title" />
 
