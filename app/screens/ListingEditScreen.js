@@ -66,22 +66,34 @@ const ListingEditScreen = () => {
   const [uploadVisible, setUploadVisible] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  const handleSubmit = async (form) => {
+  const handleSubmit = async (form, formik) => {
     setUploadVisible(true);
     const response = await listingsApi.postListing(
       { form, location },
       (progress) => setUploadProgress(progress)
     );
-    setUploadVisible(false);
 
-    if (!response.ok) return alert("Couldn't add new listing");
+    if (!response.ok) {
+      setUploadVisible(false);
+      return alert("Couldn't add new listing");
+    }
+
+    formik.resetForm();
 
     console.log("Response", response);
   };
 
+  const onDone = () => {
+    setUploadVisible(false);
+  };
+
   return (
     <SafeView padding>
-      <UploadScreen progress={uploadProgress} visible={uploadVisible} />
+      <UploadScreen
+        progress={uploadProgress}
+        visible={uploadVisible}
+        onDone={onDone}
+      />
       <Form
         validationSchema={validationSchema}
         initialValues={validationSchema.default()}
