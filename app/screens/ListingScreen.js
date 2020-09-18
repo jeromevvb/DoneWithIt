@@ -24,7 +24,7 @@ const ListingScreen = ({ navigation }) => {
                 <Card
                   title={item.title}
                   subtitle={`$${item.price}`}
-                  imageUrl={item.images[0].url}
+                  image={item.images[0]}
                   onPress={() => handlePress(item)}
                 />
               </View>

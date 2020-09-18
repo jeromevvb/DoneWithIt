@@ -1,14 +1,19 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Text from "../components/Text";
 import { ListItem } from "../components/lists";
+import CachedImage from "../components/CachedImage";
 
 const ListingDetailsScreen = ({ route }) => {
   const listing = route.params;
 
   return (
     <View>
-      <Image source={listing.image} style={styles.image} />
+      <CachedImage
+        source={listing.images[0].url}
+        preview={listing.images[0].thumbnailUrl}
+        style={styles.image}
+      />
 
       <View style={styles.content}>
         <Text>{listing.title}</Text>

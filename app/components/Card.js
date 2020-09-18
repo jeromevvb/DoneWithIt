@@ -1,16 +1,22 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 import colors from "../config/colors";
+import CachedImage from "./CachedImage";
 import Text from "./Text";
 import Touchable from "./Touchable";
 
 const Card = (props) => {
-  const { title, subtitle, onPress, imageUrl } = props;
+  const { title, subtitle, onPress, image } = props;
 
   return (
     <Touchable onPress={onPress}>
       <View style={styles.card}>
-        <Image style={styles.image} source={{ uri: imageUrl }} />
+        <CachedImage
+          source={image.url}
+          preview={image.thumbnailUrl}
+          style={styles.image}
+        />
+
         <View style={styles.content}>
           <Text numberOfLines={1} style={styles.title}>
             {title}
