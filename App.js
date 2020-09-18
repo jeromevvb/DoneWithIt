@@ -13,3 +13,19 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+/*
+
+Strategies when the app goes offline
+
+- Notify the user
+- Disable some features that require an internet connection
+- Cache Data
+  - AsyncStorage
+  - SecureStore (only use for senstive data)
+  - SQLite
+
+  - Caching image using react-native-expo-image-cache
+- Store user actions
+
+*/
