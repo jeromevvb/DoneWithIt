@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import SafeView from "../components/SafeView";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import { ListItemSeparator, ListItem } from "../components/lists";
 import routes from "../navigation/routes";
+import AuthContext from "../contexts/auth";
 
 const menuItems = [
   {
@@ -26,13 +27,15 @@ const menuItems = [
 ];
 
 const MyAccountScreen = ({ navigation }) => {
+  const { user } = useContext(AuthContext);
+
   return (
     <SafeView bgColor={colors.light}>
       <View style={styles.container}>
         <ListItem
           avatar={require("../assets/avatar.jpg")}
-          title="Jerome VVB"
-          subtitle="jeromevvb@gmail.com"
+          title={user.name}
+          subtitle={user.email}
         />
       </View>
       <View style={styles.container}>

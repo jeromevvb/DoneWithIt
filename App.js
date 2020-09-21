@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -6,15 +6,18 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import TabsNavigator from "./app/navigation/TabsNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import OfflineNotice from "./app/components/OfflineNotice";
+import AuthContext from "./app/contexts/auth";
 
 export default function App() {
+  const [user, setUser] = useState(null);
+
   return (
-    <>
+    <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
       <NavigationContainer theme={navigationTheme}>
-        <TabsNavigator />
+        {user ? <TabsNavigator /> : <AuthNavigator />}
       </NavigationContainer>
-    </>
+    </AuthContext.Provider>
   );
 }
 

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import SafeView from "../components/SafeView";
 import * as Yup from "yup";
 
-import { FormField, SubmitButton, Form } from "../components/forms";
+import {
+  FormField,
+  SubmitButton,
+  Form,
+  ErrorMessage,
+} from "../components/forms";
+import auth from "../api/auth";
+import jwtDecode from "jwt-decode";
+import AuthContext from "../contexts/auth";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -11,13 +19,25 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = (props) => {
+  const [loginError, setLoginError] = useState(false);
+  const { setUser } = useContext(AuthContext);
+
+  const handleSubmit = async ({ email, password }) => {
+    const response = await auth.login(email, password);
+
+    if (!response.ok) return setLoginError(true);
+
+    setUser(jwtDecode(response.data));
+    setLoginError(false);
+  };
+
   return (
     <SafeView padding>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <Form
         validationSchema={validationSchema}
         initialValues={validationSchema.default()}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
       >
         <FormField
           name="email"
@@ -42,6 +62,8 @@ const LoginScreen = (props) => {
           // autofill from keychain
           textContentType="password"
         />
+
+        {loginError && <ErrorMessage error={"Invalid login or password"} />}
 
         <SubmitButton title="Login" />
       </Form>
