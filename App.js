@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
-
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import TabsNavigator from "./app/navigation/TabsNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/contexts/auth";
+import authStorage from "./app/utils/authStorage";
+import { AppLoading } from "expo";
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [isReady, setIsReady] = useState(false);
+
+  const restoreUser = async () => {
+    const user = await authStorage.getUser();
+    if (user) setUser(user);
+  };
+
+  if (!isReady)
+    return (
+      <AppLoading startAsync={restoreUser} onFinish={() => setIsReady(true)} />
+    );
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
