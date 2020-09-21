@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import SafeView from "../components/SafeView";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import { ListItemSeparator, ListItem } from "../components/lists";
 import routes from "../navigation/routes";
-import AuthContext from "../contexts/auth";
+import useAuth from "../hooks/useAuth";
 
 const menuItems = [
   {
@@ -27,7 +27,7 @@ const menuItems = [
 ];
 
 const MyAccountScreen = ({ navigation }) => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useAuth();
 
   return (
     <SafeView bgColor={colors.light}>
@@ -59,6 +59,7 @@ const MyAccountScreen = ({ navigation }) => {
       <ListItem
         IconComponent={<Icon name="email" bgColor={"#ffe66d"} />}
         title="Log out"
+        onPress={logout}
       />
     </SafeView>
   );

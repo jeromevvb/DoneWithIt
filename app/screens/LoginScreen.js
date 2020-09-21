@@ -9,9 +9,8 @@ import {
   Form,
   ErrorMessage,
 } from "../components/forms";
+import useAuth from "../hooks/useAuth";
 import auth from "../api/auth";
-import jwtDecode from "jwt-decode";
-import AuthContext from "../contexts/auth";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -20,14 +19,14 @@ const validationSchema = Yup.object().shape({
 
 const LoginScreen = (props) => {
   const [loginError, setLoginError] = useState(false);
-  const { setUser } = useContext(AuthContext);
+  const { login } = useAuth();
 
   const handleSubmit = async ({ email, password }) => {
     const response = await auth.login(email, password);
 
     if (!response.ok) return setLoginError(true);
 
-    setUser(jwtDecode(response.data));
+    login(response.data);
     setLoginError(false);
   };
 
