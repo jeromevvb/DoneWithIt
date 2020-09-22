@@ -5,21 +5,18 @@ export default (apiRequest) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const request = async () => {
+  const request = async (...args) => {
     setError(false);
 
     setLoading(true);
-    const response = await apiRequest();
+    const response = await apiRequest(...args);
     setLoading(false);
 
-    if (!response.ok) return setError(true);
-
+    setError(!response.ok);
     setData(response.data);
-  };
 
-  useEffect(() => {
-    request();
-  }, []);
+    return response;
+  };
 
   return { data, loading, error, request };
 };

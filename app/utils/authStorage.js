@@ -38,4 +38,4 @@ const getUser = async () => {
   return null;
 };
 
-export default { getUser, storeToken, removeToken };
+export default { getUser, getToken, storeToken, removeToken };

@@ -13,9 +13,9 @@ const ListingScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeView padding bgColor={colors.light}>
-      <Fetch apiRequest={listingsApi.getListings}>
-        {(data) => (
+    <Fetch apiRequest={listingsApi.getListings}>
+      {(data) => (
+        <SafeView padding bgColor={colors.light}>
           <FlatList
             data={data}
             keyExtractor={(item) => item.id.toString()}
@@ -30,9 +30,9 @@ const ListingScreen = ({ navigation }) => {
               </View>
             )}
           />
-        )}
-      </Fetch>
-    </SafeView>
+        </SafeView>
+      )}
+    </Fetch>
   );
 };
 

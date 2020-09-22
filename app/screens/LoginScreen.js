@@ -10,7 +10,7 @@ import {
   ErrorMessage,
 } from "../components/forms";
 import useAuth from "../hooks/useAuth";
-import auth from "../api/auth";
+import authApi from "../api/auth";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -19,14 +19,14 @@ const validationSchema = Yup.object().shape({
 
 const LoginScreen = (props) => {
   const [loginError, setLoginError] = useState(false);
-  const { login } = useAuth();
+  const auth = useAuth();
 
   const handleSubmit = async ({ email, password }) => {
-    const response = await auth.login(email, password);
-
+    const response = await authApi.login(email, password);
+    console.log(response);
     if (!response.ok) return setLoginError(true);
 
-    login(response.data);
+    auth.login(response.data);
     setLoginError(false);
   };
 
