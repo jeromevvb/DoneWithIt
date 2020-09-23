@@ -5,7 +5,7 @@ import theme from "../config/theme";
 
 const AppTextInput = ({ icon, error, ...restProps }) => {
   return (
-    <View style={styles.input}>
+    <View style={styles.container}>
       {icon && (
         <MaterialCommunityIcons
           name={icon}
@@ -16,7 +16,7 @@ const AppTextInput = ({ icon, error, ...restProps }) => {
       )}
       <TextInput
         placeholderTextColor={theme.colors.medium}
-        style={theme.text}
+        style={[theme.text, styles.input]}
         {...restProps}
       />
     </View>
@@ -26,14 +26,17 @@ const AppTextInput = ({ icon, error, ...restProps }) => {
 AppTextInput.defaultProps = {};
 
 const styles = StyleSheet.create({
-  input: {
-    backgroundColor: theme.colors.light,
-    borderRadius: 25,
+  container: {
+    marginBottom: 5,
     flexDirection: "row",
     alignItems: "center",
+    backgroundColor: theme.colors.light,
     width: "100%",
+    borderRadius: 25,
     padding: 15,
-    marginBottom: 5,
+  },
+  input: {
+    flex: 1,
   },
   icon: {
     marginRight: 10,

@@ -53,10 +53,6 @@ const AppPicker = ({
       </TouchableWithoutFeedback>
       <Modal visible={visibleModal} animationType="slide">
         <SafeView padding>
-          <View style={styles.close}>
-            {/* <MaterialCommunityIcons name="window-close" size={30} /> */}
-            <Text>OK</Text>
-          </View>
           <FlatList
             numColumns={numberOfColumns}
             data={items}
