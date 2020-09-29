@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 
 const key = "authToken";
 
-const storeToken = async (authToken) => {
+const storeToken = async (authToken: string) => {
   try {
     await SecureStore.setItemAsync(key, authToken);
   } catch (error) {

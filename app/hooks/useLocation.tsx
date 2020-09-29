@@ -3,7 +3,10 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 
 const useLocation = () => {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
 
   useEffect(() => {
     const requestPermission = async () => {

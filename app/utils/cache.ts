@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 const prefix = "cache";
 
-const store = async (key, value) => {
+const store = async (key: string, value: any) => {
   try {
     const item = {
       value,
@@ -15,12 +15,13 @@ const store = async (key, value) => {
   }
 };
 
-const get = async (key) => {
+const get = async (key: string) => {
   try {
     const value = await AsyncStorage.getItem(prefix + key);
-    const item = JSON.parse(value);
 
-    if (!item) return null;
+    if (!value) return null;
+
+    const item = JSON.parse(value);
 
     //TODO: check if the item is not expired
 

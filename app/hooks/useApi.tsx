@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { ApiResponse } from "apisauce";
+import React, { useState } from "react";
 
-export default (apiRequest) => {
-  const [data, setData] = useState();
+export default (apiRequest: (...args: any[]) => ApiResponse<any>) => {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const request = async (...args) => {
+  const request = async (...args: any[]) => {
     setError(false);
 
     setLoading(true);
