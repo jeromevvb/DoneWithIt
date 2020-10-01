@@ -1,20 +1,25 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, GestureResponderEvent } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 import colors from "../../config/colors";
+import Touchable from "../Touchable";
 
-const ListItemAction = ({ action, onPress }) => {
+interface ListItemActionProps {
+  action?: "delete";
+  onPress?(event: GestureResponderEvent): void;
+}
+
+const ListItemAction: React.FC<ListItemActionProps> = ({ action, onPress }) => {
   const bgColor = action === "delete" ? { backgroundColor: colors.danger } : {};
   const iconName = "trash-can";
 
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <Touchable type="none" onPress={onPress}>
       <View style={[styles.container, bgColor]}>
         <MaterialCommunityIcons name={iconName} size={35} color="white" />
       </View>
-    </TouchableWithoutFeedback>
+    </Touchable>
   );
 };
 

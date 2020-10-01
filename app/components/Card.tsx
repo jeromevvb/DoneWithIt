@@ -1,18 +1,28 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import colors from "../config/colors";
 import CachedImage from "./CachedImage";
 import Text from "./Text";
 import Touchable from "./Touchable";
 
-const Card = (props) => {
+interface CardProps {
+  title: string;
+  subtitle?: string;
+  onPress?(event: GestureResponderEvent): void;
+  image: {
+    url: string;
+    thumbnailUrl: string;
+  };
+}
+
+const Card: React.FC<CardProps> = (props) => {
   const { title, subtitle, onPress, image } = props;
 
   return (
     <Touchable onPress={onPress}>
       <View style={styles.card}>
         <CachedImage
-          source={image.url}
+          uri={image.url}
           preview={image.thumbnailUrl}
           style={styles.image}
         />
@@ -21,9 +31,11 @@ const Card = (props) => {
           <Text numberOfLines={1} style={styles.title}>
             {title}
           </Text>
-          <Text numberOfLines={3} style={styles.subtitle}>
-            {subtitle}
-          </Text>
+          {subtitle && (
+            <Text numberOfLines={3} style={styles.subtitle}>
+              {subtitle}
+            </Text>
+          )}
         </View>
       </View>
     </Touchable>

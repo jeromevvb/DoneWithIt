@@ -2,7 +2,13 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
 
-const ActivityIndicator = ({ visible = false }) => {
+interface ActivityIndicatorProps {
+  visible: boolean;
+}
+
+const ActivityIndicator: React.FC<ActivityIndicatorProps> = ({
+  visible = false,
+}) => {
   if (!visible) return null;
 
   return (

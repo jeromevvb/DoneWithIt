@@ -7,17 +7,25 @@ import * as Permissions from "expo-permissions";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../config/theme";
 
-const ImageInput = ({ onSelectImage = () => {}, imageUri }) => {
+interface ImageInputProps {
+  onSelectImage(uri?: string): void;
+  imageUri?: string;
+}
+
+const ImageInput: React.FC<ImageInputProps> = ({
+  onSelectImage = () => {},
+  imageUri,
+}) => {
   const selectImage = async () => {
-    const { uri } = await ImagePicker.launchImageLibraryAsync({
+    const response = await ImagePicker.launchImageLibraryAsync({
       // select only images
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       // reduce quality for large upload
       quality: 0.5,
     });
 
-    if (uri) {
-      onSelectImage(uri);
+    if (!response.cancelled) {
+      onSelectImage(response.uri);
     }
   };
 
@@ -38,7 +46,7 @@ const ImageInput = ({ onSelectImage = () => {}, imageUri }) => {
       return Alert.alert(
         "Delete picture",
         "Are you sure to delete this picture",
-        [{ text: "No" }, { text: "Yes", onPress: () => onSelectImage(null) }]
+        [{ text: "No" }, { text: "Yes", onPress: () => onSelectImage() }]
       );
     }
 

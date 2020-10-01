@@ -10,9 +10,19 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../../config/theme";
 import Text from "../Text";
 import SafeView from "../SafeView";
-import PickerItem from "./PickerItem";
+import PickerItem, { PickerItemProps } from "./PickerItem";
 
-const AppPicker = ({
+interface AppPickerProps {
+  icon?: string;
+  items: PickerItemProps[];
+  numberOfColumns?: number;
+  PickerItemComponent?: typeof React.Component;
+  onSelectItem(item: PickerItemProps): void;
+  selectedItem?: PickerItemProps;
+  placeholder: string;
+}
+
+const AppPicker: React.FC<AppPickerProps> = ({
   icon,
   items,
   numberOfColumns = 1,

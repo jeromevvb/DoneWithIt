@@ -1,9 +1,16 @@
 import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput, TextInputProps } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../config/theme";
 
-const AppTextInput = ({ icon, error, ...restProps }) => {
+interface AppTextInputProps {
+  icon?: string;
+}
+
+const AppTextInput: React.FC<AppTextInputProps & TextInputProps> = ({
+  icon,
+  ...restProps
+}) => {
   return (
     <View style={styles.container}>
       {icon && (

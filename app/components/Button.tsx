@@ -1,8 +1,20 @@
 import React from "react";
-import { StyleSheet, Platform, Text, TouchableOpacity } from "react-native";
-import colors from "../config/colors";
+import {
+  StyleSheet,
+  Platform,
+  Text,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from "react-native";
+import colors, { Colors } from "../config/colors";
 
-const Button = (props) => {
+interface ButtonProps {
+  title: string;
+  color?: Colors;
+  onPress(event: GestureResponderEvent): void;
+}
+
+const Button: React.FC<ButtonProps> = (props) => {
   const { title, onPress, color = "primary" } = props;
 
   return (
@@ -14,8 +26,6 @@ const Button = (props) => {
     </TouchableOpacity>
   );
 };
-
-Button.defaultProps = {};
 
 const styles = StyleSheet.create({
   button: {

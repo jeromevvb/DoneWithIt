@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { ApiResponse } from "apisauce";
+import React, { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import useApi from "../hooks/useApi";
 import ActivityIndicator from "./ActivityIndicator";
 import Button from "./Button";
 import Text from "./Text";
 
-const Fetch = ({ children, apiRequest }) => {
+interface FetchProps {
+  children(data: any): JSX.Element;
+  apiRequest(): ApiResponse<any>;
+}
+
+const Fetch: React.FC<FetchProps> = ({ children, apiRequest }) => {
   const { data, error, loading, request } = useApi(apiRequest);
 
   useEffect(() => {

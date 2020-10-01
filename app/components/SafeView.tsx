@@ -1,15 +1,19 @@
 import React from "react";
-import {
-  StyleSheet,
-  Platform,
-  SafeAreaView,
-  StatusBar,
-  View,
-} from "react-native";
+import { StyleSheet, SafeAreaView, View } from "react-native";
 import Constants from "expo-constants";
-import colors from "../config/colors";
+import { Colors } from "../config/colors";
 
-const SafeView = ({ children, bgColor, padding = false }) => {
+interface SafeViewProps {
+  children: JSX.Element;
+  bgColor?: Colors;
+  padding?: boolean;
+}
+
+const SafeView: React.FC<SafeViewProps> = ({
+  children,
+  bgColor = "white",
+  padding = false,
+}) => {
   const innerStyles = [
     styles.fullHeight,
     styles.container,
@@ -22,10 +26,6 @@ const SafeView = ({ children, bgColor, padding = false }) => {
       <View style={[styles.fullHeight, paddingStyles]}>{children}</View>
     </SafeAreaView>
   );
-};
-
-SafeView.defaultProps = {
-  bgColor: colors.white,
 };
 
 const styles = StyleSheet.create({

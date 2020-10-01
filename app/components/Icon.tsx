@@ -2,7 +2,19 @@ import React from "react";
 import { View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const Icon = ({ name, size = 40, color = "white", bgColor }) => {
+interface IconProps {
+  name: string;
+  size?: number;
+  color?: string;
+  bgColor: string;
+}
+
+const Icon: React.FC<IconProps> = ({
+  name,
+  size = 40,
+  color = "white",
+  bgColor,
+}) => {
   return (
     <View
       style={{

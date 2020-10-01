@@ -1,17 +1,34 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, GestureResponderEvent } from "react-native";
 import Text from "../Text";
 import Icon from "../Icon";
+import { PickerItemProps } from "./PickerItem";
+import Touchable from "../Touchable";
 
-const PickerIconItem = ({ item, onPress, selected = false }) => {
+interface PickerIconItemProps {
+  item: PickerItemProps & {
+    icon: {
+      name: string;
+      bgColor: string;
+    };
+  };
+  onPress?: (event: GestureResponderEvent) => void | undefined;
+  selected: boolean;
+}
+
+const PickerIconItem: React.FC<PickerIconItemProps> = ({
+  item,
+  onPress,
+  selected = false,
+}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
+      <Touchable onPress={onPress}>
         <View style={styles.content}>
           <Icon name={item.icon.name} bgColor={item.icon.bgColor} size={60} />
           <Text style={styles.text}>{item.label}</Text>
         </View>
-      </TouchableOpacity>
+      </Touchable>
     </View>
   );
 };

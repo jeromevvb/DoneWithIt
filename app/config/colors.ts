@@ -1,3 +1,12 @@
+export type Colors =
+  | "primary"
+  | "secondary"
+  | "white"
+  | "medium"
+  | "light"
+  | "danger"
+  | "dark";
+
 const colors: { [name: string]: string } = {
   primary: "#fc5c65",
   secondary: "#4ecdc4",

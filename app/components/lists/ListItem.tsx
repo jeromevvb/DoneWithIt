@@ -1,5 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  GestureResponderEvent,
+  ImageSourcePropType,
+} from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -7,7 +13,17 @@ import Text from "../Text";
 import colors from "../../config/colors";
 import Touchable from "../Touchable";
 
-const RenderSwipeable = ({ rightActions, children }) => {
+interface rightActionsProps {
+  rightActions(): React.ReactNode[];
+}
+
+const RenderSwipeable = ({
+  rightActions,
+  children,
+}: {
+  rightActions?: rightActionsProps;
+  children: JSX.Element;
+}): JSX.Element => {
   if (rightActions) {
     return <Swipeable renderRightActions={rightActions}>{children}</Swipeable>;
   }
@@ -15,7 +31,17 @@ const RenderSwipeable = ({ rightActions, children }) => {
   return children;
 };
 
-const ListItem = (props) => {
+interface ListItemProps {
+  rightActions?: rightActionsProps;
+  avatar?: ImageSourcePropType;
+  IconComponent?: React.ReactNode;
+  showChevron?: boolean;
+  title: string;
+  subtitle?: string;
+  onPress?(event: GestureResponderEvent): void;
+}
+
+const ListItem: React.FC<ListItemProps> = (props) => {
   const {
     avatar,
     IconComponent,
