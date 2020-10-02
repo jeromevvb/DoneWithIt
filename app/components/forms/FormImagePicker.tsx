@@ -1,21 +1,31 @@
 import React from "react";
-import { useFormikContext } from "formik";
+import { FormikProps, FormikValues, useFormikContext } from "formik";
 import { View, StyleSheet } from "react-native";
 
 import ErrorMessage from "./ErrorMessage";
 import ImageListInput from "../ImageListInput";
 
-const FormImagePicker = ({ name, ...restProps }) => {
-  const { setFieldValue, values, touched, errors } = useFormikContext();
+interface FormImagePickerProps {
+  name: string;
+}
+
+const FormImagePicker: React.FC<FormImagePickerProps> = ({
+  name,
+  ...restProps
+}) => {
+  const { setFieldValue, values, touched, errors } = useFormikContext<
+    FormikValues
+  >();
+
   const imagesUris = values[name];
 
-  const handleAddImage = (imageUri) => {
+  const handleAddImage = (imageUri: string) => {
     // add image to values
     setFieldValue(name, [...imagesUris, imageUri]);
   };
 
-  const handleRemoveImage = (imageUri) => {
-    const hydratedValues = imagesUris.filter((i) => i !== imageUri);
+  const handleRemoveImage = (imageUri: string) => {
+    const hydratedValues = imagesUris.filter((i: string) => i !== imageUri);
     setFieldValue(name, hydratedValues);
   };
 
@@ -30,7 +40,7 @@ const FormImagePicker = ({ name, ...restProps }) => {
 
       {touched[name] && (
         <View style={styles.error}>
-          <ErrorMessage error={errors[name]} />
+          <ErrorMessage error={errors[name] as string} />
         </View>
       )}
     </View>

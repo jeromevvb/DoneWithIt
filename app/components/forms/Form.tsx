@@ -1,7 +1,12 @@
 import React from "react";
-import { Formik } from "formik";
+import { Formik, FormikConfig, FormikValues } from "formik";
 
-const AppForm = ({ validationSchema, initialValues, onSubmit, children }) => {
+const AppForm: React.FC<FormikConfig<FormikValues>> = ({
+  validationSchema,
+  initialValues,
+  onSubmit,
+  children,
+}) => {
   return (
     <Formik
       validationSchema={validationSchema}

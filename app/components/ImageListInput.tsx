@@ -4,7 +4,7 @@ import ImageInput from "./ImageInput";
 
 interface ImageListInputProps {
   imagesUris: string[];
-  onAddImage(): void;
+  onAddImage(uri?: string): void;
   onRemoveImage(imageUri: string): void;
 }
 

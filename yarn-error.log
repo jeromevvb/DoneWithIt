@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add @types/react-native-gesture-handler
+  /usr/local/bin/node /usr/local/bin/yarn add @types/formik
 
 PATH: 
-  /Users/jeromevvb/Library/Android/sdk/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/jeromevvb/Library/Android/sdk/platform-tools
+  /Users/jeromevvb/Library/Android/sdk/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 
 Yarn version: 
   1.22.5
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-native-gesture-handler: Not found
+  Error: https://registry.yarnpkg.com/@types%2fformik: Not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (events.js:315:20)
@@ -60,7 +60,7 @@ npm manifest:
       "react-dom": "~16.11.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
       "react-native-expo-image-cache": "^4.1.0",
-      "react-native-gesture-handler": "~1.6.0",
+      "react-native-gesture-handler": "^1.8.0",
       "react-native-progress": "^4.1.2",
       "react-native-reanimated": "~1.9.0",
       "react-native-safe-area-context": "~3.0.7",
@@ -3225,11 +3225,6 @@ Lockfile:
     dependencies:
       source-map "^0.7.3"
   
-  hoist-non-react-statics@^2.3.1:
-    version "2.5.5"
-    resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
-    integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
-  
   hoist-non-react-statics@^3.3.0:
     version "3.3.2"
     resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
@@ -4838,13 +4833,13 @@ Lockfile:
       crypto-js "^3.1.9-1"
       lodash "^4.17.4"
   
-  react-native-gesture-handler@~1.6.0:
-    version "1.6.1"
-    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
-    integrity sha512-gQgIKhDiYf754yzhhliagLuLupvGb6ZyBdzYzr7aus3Fyi87TLOw63ers+r4kGw0h26oAWTAdHd34JnF4NeL6Q==
+  react-native-gesture-handler@^1.8.0:
+    version "1.8.0"
+    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.8.0.tgz#18f61f51da50320f938957b0ee79bc58f47449dc"
+    integrity sha512-E2FZa0qZ5Bi0Z8Jg4n9DaFomHvedSjwbO2DPmUUHYRy1lH2yxXUpSrqJd6yymu+Efzmjg2+JZzsjFYA2Iq8VEQ==
     dependencies:
       "@egjs/hammerjs" "^2.0.17"
-      hoist-non-react-statics "^2.3.1"
+      hoist-non-react-statics "^3.3.0"
       invariant "^2.2.4"
       prop-types "^15.7.2"
   

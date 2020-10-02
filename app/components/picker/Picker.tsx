@@ -12,7 +12,7 @@ import Text from "../Text";
 import SafeView from "../SafeView";
 import PickerItem, { PickerItemProps } from "./PickerItem";
 
-interface AppPickerProps {
+export interface PickerProps {
   icon?: string;
   items: PickerItemProps[];
   numberOfColumns?: number;
@@ -22,7 +22,7 @@ interface AppPickerProps {
   placeholder: string;
 }
 
-const AppPicker: React.FC<AppPickerProps> = ({
+const Picker: React.FC<PickerProps> = ({
   icon,
   items,
   numberOfColumns = 1,
@@ -111,4 +111,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppPicker;
+export default Picker;

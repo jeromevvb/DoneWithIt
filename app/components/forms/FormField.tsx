@@ -1,18 +1,22 @@
 import React from "react";
-import { useFormikContext } from "formik";
+import { FormikValues, useFormikContext } from "formik";
 import { View, StyleSheet } from "react-native";
 
 import TextInput from "../TextInput";
 import ErrorMessage from "./ErrorMessage";
 
-const FormField = ({ name, ...restProps }) => {
+interface FormFieldPickerProps {
+  name: string;
+}
+
+const FormField: React.FC<FormFieldPickerProps> = ({ name, ...restProps }) => {
   const {
     handleChange,
     values,
     handleBlur,
     touched,
     errors,
-  } = useFormikContext();
+  } = useFormikContext<FormikValues>();
 
   return (
     <View style={styles.container}>
@@ -24,7 +28,7 @@ const FormField = ({ name, ...restProps }) => {
       />
       {touched[name] && (
         <View style={styles.error}>
-          <ErrorMessage error={errors[name]} />
+          <ErrorMessage error={errors[name] as string} />
         </View>
       )}
     </View>
