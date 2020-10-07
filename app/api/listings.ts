@@ -1,3 +1,6 @@
+import { FormikValues } from "formik";
+import { UseLocationType } from "../hooks/useLocation";
+
 const { default: client } = require("./client");
 
 const endpoint = "/listings";
@@ -11,7 +14,10 @@ const getListings = () => client.get(endpoint);
 // -location
 // ‘images’, {  name: ‘unique name’,  type: ‘image/jpeg’, uri: ‘uri of the image on the device’ };
 
-const postListing = async ({ form, location }, onUploadProgress) => {
+const postListing = async (
+  { form, location }: { form: FormikValues; location: UseLocationType },
+  onUploadProgress: (progress: number) => void
+) => {
   const data = new FormData();
   data.append("title", form.title);
   data.append("price", form.price);
@@ -22,16 +28,18 @@ const postListing = async ({ form, location }, onUploadProgress) => {
     data.append("location", JSON.stringify(location));
   }
 
-  form.images.forEach((imageUri, i) => {
-    return data.append("images", {
+  form.images.forEach((imageUri: string, i: number) => {
+    const formDataImage = {
       name: `image-${i}`,
       type: "image/jpeg",
       uri: imageUri,
-    });
+    } as any;
+
+    return data.append("images", formDataImage);
   });
 
   return client.post(endpoint, data, {
-    onUploadProgress: (progress) => {
+    onUploadProgress: (progress: any) => {
       onUploadProgress(progress.loaded / progress.total);
     },
   });

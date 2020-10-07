@@ -1,21 +1,21 @@
 import React from "react";
 import { Text as TextNative, TextProps as TextPropsNative } from "react-native";
 import theme from "../config/theme";
-import { Colors } from "../config/colors";
+import colors, { ColorsType } from "../config/colors";
 
-interface TextProps {
-  children: JSX.Element | string;
+interface TextProps extends TextPropsNative {
+  children: React.ReactNode;
   style?: Object;
-  color?: Colors;
+  color?: ColorsType;
 }
 
-const Text: React.FC<TextProps & TextPropsNative> = ({
+const Text: React.FC<TextProps> = ({
   children,
   style,
   color,
   ...restProps
 }) => {
-  const colorStyle = color ? { color: theme.colors[color] } : {};
+  const colorStyle = color ? { color: colors[color] } : {};
 
   return (
     <TextNative style={[theme.text, colorStyle, style]} {...restProps}>

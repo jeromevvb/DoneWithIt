@@ -3,14 +3,11 @@ import { View, StyleSheet, TextInput, TextInputProps } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import theme from "../config/theme";
 
-interface AppTextInputProps {
+export interface AppTextInputProps extends TextInputProps {
   icon?: string;
 }
 
-const AppTextInput: React.FC<AppTextInputProps & TextInputProps> = ({
-  icon,
-  ...restProps
-}) => {
+const AppTextInput: React.FC<AppTextInputProps> = ({ icon, ...restProps }) => {
   return (
     <View style={styles.container}>
       {icon && (

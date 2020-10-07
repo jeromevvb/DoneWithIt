@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, SafeAreaView, View } from "react-native";
 import Constants from "expo-constants";
-import { Colors } from "../config/colors";
+import ColorsType from "../config/colors";
 
 interface SafeViewProps {
-  children: JSX.Element;
-  bgColor?: Colors;
+  children: React.ReactNode;
+  bgColor?: ColorsType;
   padding?: boolean;
 }
 

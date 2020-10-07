@@ -5,7 +5,6 @@ import Button from "../Button";
 
 const SubmitButton: React.FC<{
   title: string;
-  onPress(event: GestureResponderEvent): void;
 }> = ({ title }) => {
   const { handleSubmit } = useFormikContext();
 

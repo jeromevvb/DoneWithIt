@@ -1,9 +1,9 @@
 import React from "react";
+import { UserType } from "../models/user";
 
-type User = null | Object;
 interface Props {
-  user: User;
-  setUser: (user: User) => void;
+  user: UserType | null;
+  setUser: (user: UserType | null) => void;
 }
 
 const AuthContext = React.createContext<Props>({

@@ -16,8 +16,8 @@ export interface PickerProps {
   icon?: string;
   items: PickerItemProps[];
   numberOfColumns?: number;
-  PickerItemComponent?: typeof React.Component;
-  onSelectItem(item: PickerItemProps): void;
+  PickerItemComponent?: React.ComponentType<any>;
+  onSelectItem?(item: PickerItemProps): void;
   selectedItem?: PickerItemProps;
   placeholder: string;
 }

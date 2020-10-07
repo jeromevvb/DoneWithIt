@@ -4,8 +4,9 @@ import SafeView from "../components/SafeView";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import { ListItemSeparator, ListItem } from "../components/lists";
-import routes from "../navigation/routes";
-import useAuth from "../hooks/useAuth";
+import routes, { RootStackParamList } from "../navigation/routes";
+import useAuth, { AuthInterface } from "../hooks/useAuth";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const menuItems = [
   {
@@ -26,17 +27,23 @@ const menuItems = [
   },
 ];
 
-const MyAccountScreen = ({ navigation }) => {
+interface MyAccountScreenProps {
+  navigation: StackNavigationProp<RootStackParamList, routes.ACCOUNT>;
+}
+
+const MyAccountScreen: React.FC<MyAccountScreenProps> = ({ navigation }) => {
   const { user, logout } = useAuth();
 
   return (
     <SafeView bgColor={colors.light}>
       <View style={styles.container}>
-        <ListItem
-          avatar={require("../assets/avatar.jpg")}
-          title={user.name}
-          subtitle={user.email}
-        />
+        {user && (
+          <ListItem
+            avatar={require("../assets/avatar.jpg")}
+            title={user.name}
+            subtitle={user.email}
+          />
+        )}
       </View>
       <View style={styles.container}>
         <FlatList

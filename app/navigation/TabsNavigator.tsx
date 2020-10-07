@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -9,9 +8,10 @@ import theme from "../config/theme";
 import AccountNavigator from "./AccountNavigator";
 import ListingNavigator from "./ListingNavigator";
 import NewListingButton from "./NewListingButton";
+import { RootStackParamList } from "./routes";
 import routes from "./routes";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const TabsNavigator = () => {
   return (

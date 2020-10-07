@@ -1,10 +1,14 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, GestureResponderEvent } from "react-native";
 import theme from "../config/theme";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Touchable from "../components/Touchable";
 
-const NewListingButton = ({ onPress }) => {
+const NewListingButton = ({
+  onPress,
+}: {
+  onPress(event: GestureResponderEvent): void;
+}) => {
   return (
     <Touchable onPress={onPress}>
       <View style={styles.container}>

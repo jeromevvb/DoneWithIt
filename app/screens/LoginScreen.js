@@ -21,9 +21,9 @@ const LoginScreen = (props) => {
   const [loginError, setLoginError] = useState(false);
   const auth = useAuth();
 
-  const handleSubmit = async ({ email, password }) => {
-    const response = await authApi.login(email, password);
-    console.log(response);
+  const handleSubmit = async (credentials) => {
+    const response = await authApi.login(credentials);
+
     if (!response.ok) return setLoginError(true);
 
     auth.login(response.data);

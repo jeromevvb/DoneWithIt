@@ -2,10 +2,10 @@ import React from "react";
 import { FormikValues, useFormikContext } from "formik";
 import { View, StyleSheet } from "react-native";
 
-import TextInput from "../TextInput";
+import TextInput, { AppTextInputProps } from "../TextInput";
 import ErrorMessage from "./ErrorMessage";
 
-interface FormFieldPickerProps {
+interface FormFieldPickerProps extends AppTextInputProps {
   name: string;
 }
 

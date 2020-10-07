@@ -11,7 +11,7 @@ import Touchable from "../Touchable";
 
 export interface PickerItemProps {
   label: string;
-  value: string;
+  value: string | number;
 }
 
 interface Props {

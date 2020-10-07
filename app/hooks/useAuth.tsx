@@ -2,8 +2,15 @@ import { useContext } from "react";
 import authStorage from "../utils/authStorage";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../contexts/auth";
+import { UserType } from "../models/user";
 
-const useAuth = () => {
+export interface AuthInterface {
+  user: UserType | null;
+  login(authToken: string): void;
+  logout(): void;
+}
+
+const useAuth = (): AuthInterface => {
   const { user, setUser } = useContext(AuthContext);
 
   const logout = () => {

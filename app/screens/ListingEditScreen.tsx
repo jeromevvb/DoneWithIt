@@ -8,6 +8,7 @@ import FormImagePicker from "../components/forms/FormImagePicker";
 import useLocation from "../hooks/useLocation";
 import listingsApi from "../api/listings";
 import UploadScreen from "./UploadScreen";
+import { FormikHelpers, FormikValues } from "formik";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -66,19 +67,24 @@ const ListingEditScreen = () => {
   const [uploadVisible, setUploadVisible] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  const handleSubmit = async (form, formik) => {
+  const handleSubmit = async (
+    form: FormikValues,
+    formikHelpers: FormikHelpers<FormikValues>
+  ) => {
     setUploadVisible(true);
     const response = await listingsApi.postListing(
       { form, location },
-      (progress) => setUploadProgress(progress)
+      (progress: number) => setUploadProgress(progress)
     );
 
     if (!response.ok) {
       setUploadVisible(false);
+      console.log(response);
+
       return alert("Couldn't add new listing");
     }
 
-    formik.resetForm();
+    formikHelpers.resetForm();
 
     console.log("Response", response);
   };
@@ -96,7 +102,7 @@ const ListingEditScreen = () => {
       />
       <Form
         validationSchema={validationSchema}
-        initialValues={validationSchema.default()}
+        initialValues={validationSchema.default() as object}
         onSubmit={handleSubmit}
       >
         <FormImagePicker name="images" />
@@ -131,9 +137,5 @@ const ListingEditScreen = () => {
     </SafeView>
   );
 };
-
-ListingEditScreen.defaultProps = {};
-
-const styles = StyleSheet.create({});
 
 export default ListingEditScreen;

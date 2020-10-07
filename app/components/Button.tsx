@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   GestureResponderEvent,
 } from "react-native";
-import colors, { Colors } from "../config/colors";
+import colors, { ColorsType } from "../config/colors";
 
 interface ButtonProps {
   title: string;
-  color?: Colors;
+  color?: ColorsType;
   onPress(event: GestureResponderEvent): void;
 }
 

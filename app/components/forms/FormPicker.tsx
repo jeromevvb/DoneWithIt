@@ -7,14 +7,12 @@ import {
 } from "formik";
 import { View, StyleSheet } from "react-native";
 
-import Picker from "../picker/Picker";
+import Picker, { PickerProps } from "../picker/Picker";
 import ErrorMessage from "./ErrorMessage";
 import { PickerItemProps } from "../picker/PickerItem";
 
-interface FormPickerProps {
+interface FormPickerProps extends PickerProps {
   name: string;
-  items: PickerItemProps[];
-  placeholder: string;
 }
 
 const FormPicker: React.FC<FormPickerProps> = ({
@@ -30,11 +28,11 @@ const FormPicker: React.FC<FormPickerProps> = ({
   return (
     <View style={styles.container}>
       <Picker
+        {...restProps}
         items={items}
         placeholder={placeholder}
         onSelectItem={(item) => setFieldValue(name, item)}
         selectedItem={values[name]}
-        {...restProps}
       />
       {touched[name] && (
         <View style={styles.error}>

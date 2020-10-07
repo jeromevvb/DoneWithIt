@@ -1,11 +1,20 @@
 import React from "react";
 import { View, StyleSheet, Modal } from "react-native";
-import SafeView from "../components/SafeView";
 import * as Progress from "react-native-progress";
 import theme from "../config/theme";
 import LottieView from "lottie-react-native";
 
-const UploadScreen = ({ progress, visible, onDone }) => {
+interface UploadScreenProps {
+  progress: number;
+  visible: boolean;
+  onDone?(isCancelled: boolean): void;
+}
+
+const UploadScreen: React.FC<UploadScreenProps> = ({
+  progress,
+  visible,
+  onDone,
+}) => {
   return (
     <Modal visible={visible}>
       <View style={styles.container}>

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 
-const useLocation = () => {
-  const [location, setLocation] = useState<{
-    latitude: number;
-    longitude: number;
-  } | null>(null);
+export type UseLocationType = {
+  latitude: number;
+  longitude: number;
+} | null;
+
+const useLocation = (): UseLocationType => {
+  const [location, setLocation] = useState<UseLocationType>(null);
 
   useEffect(() => {
     const requestPermission = async () => {

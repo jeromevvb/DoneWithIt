@@ -3,14 +3,23 @@ import { View, StyleSheet } from "react-native";
 import Text from "../components/Text";
 import { ListItem } from "../components/lists";
 import CachedImage from "../components/CachedImage";
+import colors from "../config/colors";
+import routes, { RootStackParamList } from "../navigation/routes";
+import { RouteProp } from "@react-navigation/native";
 
-const ListingDetailsScreen = ({ route }) => {
+interface ListingDetailsScreenProps {
+  route: RouteProp<RootStackParamList, routes.LISTING_DETAILS>;
+}
+
+const ListingDetailsScreen: React.FC<ListingDetailsScreenProps> = ({
+  route,
+}) => {
   const listing = route.params;
 
   return (
     <View>
       <CachedImage
-        source={listing.images[0].url}
+        uri={listing.images[0].url}
         preview={listing.images[0].thumbnailUrl}
         style={styles.image}
       />
