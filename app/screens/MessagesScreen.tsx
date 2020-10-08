@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, ImageURISource } from "react-native";
 
 import SafeView from "../components/SafeView";
 import {
@@ -8,7 +8,14 @@ import {
   ListItem,
 } from "../components/lists";
 
-const data = [
+interface MessageProps {
+  id: number;
+  title: string;
+  description: string;
+  image: ImageURISource;
+}
+
+const data: MessageProps[] = [
   {
     id: 1,
     title: "T1",
@@ -25,11 +32,11 @@ const data = [
   },
 ];
 
-const MessagesScreen = (props) => {
+const MessagesScreen = () => {
   const [messages, setMessages] = useState(data);
   const [refresh, setRefresh] = useState(false);
 
-  const onDelete = (item) => {
+  const onDelete = (item: MessageProps) => {
     // waiting to connect to server
     setMessages(messages.filter((m) => m.id !== item.id));
   };
@@ -72,9 +79,5 @@ const MessagesScreen = (props) => {
     </SafeView>
   );
 };
-
-MessagesScreen.defaultProps = {};
-
-const styles = StyleSheet.create({});
 
 export default MessagesScreen;

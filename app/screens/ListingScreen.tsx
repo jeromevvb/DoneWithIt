@@ -1,3 +1,4 @@
+import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import listingsApi from "../api/listings";
@@ -5,10 +6,15 @@ import Card from "../components/Card";
 import Fetch from "../components/Fetch";
 import SafeView from "../components/SafeView";
 import colors from "../config/colors";
-import routes from "../navigation/routes";
+import { ListingEditType } from "../models/listing";
+import routes, { RootStackParamList } from "../navigation/routes";
 
-const ListingScreen = ({ navigation }) => {
-  const handlePress = (item) => {
+interface ListingScreenProps {
+  navigation: StackNavigationProp<RootStackParamList, routes.LISTING>;
+}
+
+const ListingScreen: React.FC<ListingScreenProps> = ({ navigation }) => {
+  const handlePress = (item: ListingEditType) => {
     navigation.navigate(routes.LISTING_DETAILS, item);
   };
 

@@ -2,9 +2,14 @@ import React from "react";
 import SafeView from "../components/SafeView";
 import { View, StyleSheet, ImageBackground, Image, Text } from "react-native";
 import Button from "../components/Button";
-import routes from "../navigation/routes";
+import routes, { RootStackParamList } from "../navigation/routes";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-const WelcomeScreen = ({ navigation }) => {
+interface WelcomeScreenProps {
+  navigation: StackNavigationProp<RootStackParamList, routes.WELCOME>;
+}
+
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
   return (
     <ImageBackground
       blurRadius={3}

@@ -13,17 +13,13 @@ import Text from "../Text";
 import colors from "../../config/colors";
 import Touchable from "../Touchable";
 
-interface rightActionsProps {
-  rightActions(): React.ReactNode[];
-}
-
 const RenderSwipeable = ({
   rightActions,
   children,
 }: {
-  rightActions?: rightActionsProps;
+  rightActions?(): JSX.Element;
   children: JSX.Element;
-}): JSX.Element => {
+}) => {
   if (rightActions) {
     return <Swipeable renderRightActions={rightActions}>{children}</Swipeable>;
   }
@@ -32,7 +28,7 @@ const RenderSwipeable = ({
 };
 
 interface ListItemProps {
-  rightActions?: rightActionsProps;
+  rightActions?(): JSX.Element;
   avatar?: ImageSourcePropType;
   IconComponent?: React.ReactNode;
   showChevron?: boolean;

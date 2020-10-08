@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import * as Yup from "yup";
 import SafeView from "../components/SafeView";
 import {
   ErrorMessage,
@@ -12,20 +11,18 @@ import auth from "../api/auth";
 import useAuth from "../hooks/useAuth";
 import useApi from "../hooks/useApi";
 import ActivityIndicator from "../components/ActivityIndicator";
+import { UserRegistrationSchema, UserRegistrationType } from "../models/user";
+import { FormikValues } from "formik";
 
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required().label("Name"),
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(5).label("Password"),
-});
+const validationSchema = UserRegistrationSchema;
 
-const RegisterScreen = (props) => {
-  const [error, setError] = useState(null);
+const RegisterScreen = () => {
+  const [error, setError] = useState<string | null>(null);
   const { login } = useAuth();
   const usersApi = useApi(users.register);
   const authApi = useApi(auth.login);
 
-  const handleSubmit = async (form) => {
+  const handleSubmit = async (form: FormikValues) => {
     const response = await usersApi.request(form);
 
     if (!response.ok) {
@@ -82,7 +79,5 @@ const RegisterScreen = (props) => {
     </>
   );
 };
-
-RegisterScreen.defaultProps = {};
 
 export default RegisterScreen;

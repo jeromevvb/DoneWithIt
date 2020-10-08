@@ -4,7 +4,7 @@ import { View, StyleSheet, Image } from "react-native";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const Preview = (props) => {
+const Preview = () => {
   return (
     <SafeView>
       <View style={styles.container}>

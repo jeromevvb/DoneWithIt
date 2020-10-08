@@ -1,3 +1,5 @@
+import { ListingEditType } from "../models/listing";
+
 enum routes {
   WELCOME = "WELCOME",
   LOGIN = "LOGIN",
@@ -17,12 +19,7 @@ export type RootStackParamList = {
   LOGIN: undefined;
   REGISTER: undefined;
   LISTING: { sort: "latest" | "top" } | undefined;
-  LISTING_DETAILS: {
-    id: number;
-    images: Array<{ url: string; thumbnailUrl: string }>;
-    title: string;
-    price: string;
-  };
+  LISTING_DETAILS: ListingEditType;
   LISTING_EDIT: { id?: number };
   ACCOUNT: undefined;
   MESSAGES: undefined;
@@ -30,3 +27,10 @@ export type RootStackParamList = {
 };
 
 export default routes;
+
+// {
+//   id: number;
+//   images: Array<{ url: string; thumbnailUrl: string }>;
+//   title: string;
+//   price: string;
+// };

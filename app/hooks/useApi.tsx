@@ -1,7 +1,7 @@
 import { ApiResponse } from "apisauce";
 import React, { useState } from "react";
 
-export default (apiRequest: (...args: any[]) => ApiResponse<any>) => {
+const useApi = (apiRequest: (...args: any[]) => Promise<ApiResponse<any>>) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -21,3 +21,5 @@ export default (apiRequest: (...args: any[]) => ApiResponse<any>) => {
 
   return { data, loading, error, request };
 };
+
+export default useApi;

@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import SafeView from "../components/SafeView";
-import * as Yup from "yup";
-
 import {
   FormField,
   SubmitButton,
@@ -11,22 +9,22 @@ import {
 } from "../components/forms";
 import useAuth from "../hooks/useAuth";
 import authApi from "../api/auth";
+import { LoginCredentialsSchema } from "../models/auth";
+import { FormikValues } from "formik";
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().label("Password"),
-});
+const validationSchema = LoginCredentialsSchema;
 
-const LoginScreen = (props) => {
+const LoginScreen = () => {
   const [loginError, setLoginError] = useState(false);
   const auth = useAuth();
 
-  const handleSubmit = async (credentials) => {
+  const handleSubmit = async (credentials: FormikValues) => {
     const response = await authApi.login(credentials);
 
     if (!response.ok) return setLoginError(true);
 
-    auth.login(response.data);
+    const authToken = response.data as string;
+    auth.login(authToken);
     setLoginError(false);
   };
 
@@ -35,7 +33,7 @@ const LoginScreen = (props) => {
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <Form
         validationSchema={validationSchema}
-        initialValues={validationSchema.default()}
+        initialValues={validationSchema.default() as object}
         onSubmit={handleSubmit}
       >
         <FormField

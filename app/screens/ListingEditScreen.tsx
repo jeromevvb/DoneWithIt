@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
 import SafeView from "../components/SafeView";
-import * as Yup from "yup";
 import { Form, FormField, SubmitButton, FormPicker } from "../components/forms";
 import { PickerIconItem } from "../components/picker";
 import FormImagePicker from "../components/forms/FormImagePicker";
@@ -9,14 +7,9 @@ import useLocation from "../hooks/useLocation";
 import listingsApi from "../api/listings";
 import UploadScreen from "./UploadScreen";
 import { FormikHelpers, FormikValues } from "formik";
+import { ListingEditSchema, ListingEditType } from "../models/listing";
 
-const validationSchema = Yup.object().shape({
-  title: Yup.string().required().min(1).label("Title"),
-  images: Yup.array().min(1, "Please select at least one image").ensure(),
-  price: Yup.number().required().min(1).max(10000).label("Price"),
-  category: Yup.object().required().label("Category").nullable(),
-  description: Yup.string().min(10).label("Description"),
-});
+const validationSchema = ListingEditSchema;
 
 const categories = [
   {
@@ -93,6 +86,8 @@ const ListingEditScreen = () => {
     setUploadVisible(false);
   };
 
+  const initialValues = validationSchema.default() as ListingEditType;
+
   return (
     <SafeView padding>
       <UploadScreen
@@ -102,7 +97,7 @@ const ListingEditScreen = () => {
       />
       <Form
         validationSchema={validationSchema}
-        initialValues={validationSchema.default() as object}
+        initialValues={initialValues}
         onSubmit={handleSubmit}
       >
         <FormImagePicker name="images" />

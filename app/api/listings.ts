@@ -1,5 +1,6 @@
 import { FormikValues } from "formik";
 import { UseLocationType } from "../hooks/useLocation";
+import { ListingEditType } from "../models/listing";
 
 const { default: client } = require("./client");
 
@@ -28,11 +29,11 @@ const postListing = async (
     data.append("location", JSON.stringify(location));
   }
 
-  form.images.forEach((imageUri: string, i: number) => {
+  form.images.forEach((value: string, i: number) => {
     const formDataImage = {
       name: `image-${i}`,
       type: "image/jpeg",
-      uri: imageUri,
+      uri: value,
     } as any;
 
     return data.append("images", formDataImage);
