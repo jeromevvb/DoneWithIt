@@ -9,8 +9,7 @@ import {
 } from "../components/forms";
 import useAuth from "../hooks/useAuth";
 import authApi from "../api/auth";
-import { LoginCredentialsSchema } from "../models/auth";
-import { FormikValues } from "formik";
+import { LoginCredentialsSchema, LoginCredentialsType } from "../models/auth";
 
 const validationSchema = LoginCredentialsSchema;
 
@@ -18,7 +17,7 @@ const LoginScreen = () => {
   const [loginError, setLoginError] = useState(false);
   const auth = useAuth();
 
-  const handleSubmit = async (credentials: FormikValues) => {
+  const handleSubmit = async (credentials: LoginCredentialsType) => {
     const response = await authApi.login(credentials);
 
     if (!response.ok) return setLoginError(true);
