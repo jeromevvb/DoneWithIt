@@ -1,5 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 import jwtDecode from "jwt-decode";
+import { UserType } from "../models/user";
 
 const key = "authToken";
 
@@ -30,7 +31,7 @@ const removeToken = async () => {
   }
 };
 
-const getUser = async () => {
+const getUser = async (): Promise<UserType | null> => {
   const token = await getToken();
 
   if (token) return jwtDecode(token);
