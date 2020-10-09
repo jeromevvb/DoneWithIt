@@ -6,7 +6,7 @@ import FormImagePicker from "../components/forms/FormImagePicker";
 import useLocation from "../hooks/useLocation";
 import listingsApi from "../api/listings";
 import UploadScreen from "./UploadScreen";
-import { FormikHelpers, FormikValues } from "formik";
+import { FormikHelpers } from "formik";
 import { ListingEditSchema, ListingEditType } from "../models/listing";
 
 const validationSchema = ListingEditSchema;
@@ -60,9 +60,11 @@ const ListingEditScreen = () => {
   const [uploadVisible, setUploadVisible] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
+  const initialValues: ListingEditType = validationSchema.default();
+
   const handleSubmit = async (
-    form: FormikValues,
-    formikHelpers: FormikHelpers<FormikValues>
+    form: ListingEditType,
+    formikHelpers: FormikHelpers<ListingEditType>
   ) => {
     setUploadVisible(true);
     const response = await listingsApi.postListing(
@@ -85,8 +87,6 @@ const ListingEditScreen = () => {
   const onDone = () => {
     setUploadVisible(false);
   };
-
-  const initialValues = validationSchema.default() as ListingEditType;
 
   return (
     <SafeView padding>

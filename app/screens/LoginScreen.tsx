@@ -16,9 +16,10 @@ const validationSchema = LoginCredentialsSchema;
 const LoginScreen = () => {
   const [loginError, setLoginError] = useState(false);
   const auth = useAuth();
+  const initialValues: LoginCredentialsType = validationSchema.default();
 
-  const handleSubmit = async (credentials: LoginCredentialsType) => {
-    const response = await authApi.login(credentials);
+  const handleSubmit = async (values: LoginCredentialsType) => {
+    const response = await authApi.login(values);
 
     if (!response.ok) return setLoginError(true);
 
@@ -32,7 +33,7 @@ const LoginScreen = () => {
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <Form
         validationSchema={validationSchema}
-        initialValues={validationSchema.default() as object}
+        initialValues={initialValues}
         onSubmit={handleSubmit}
       >
         <FormField

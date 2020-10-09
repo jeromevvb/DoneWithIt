@@ -12,7 +12,6 @@ import useAuth from "../hooks/useAuth";
 import useApi from "../hooks/useApi";
 import ActivityIndicator from "../components/ActivityIndicator";
 import { UserRegistrationSchema, UserRegistrationType } from "../models/user";
-import { FormikValues } from "formik";
 
 const validationSchema = UserRegistrationSchema;
 
@@ -22,8 +21,10 @@ const RegisterScreen = () => {
   const usersApi = useApi(users.register);
   const authApi = useApi(auth.login);
 
-  const handleSubmit = async (form: FormikValues) => {
-    const response = await usersApi.request(form);
+  const initialValues: UserRegistrationType = validationSchema.default();
+
+  const handleSubmit = async (values: UserRegistrationType) => {
+    const response = await usersApi.request(values);
 
     if (!response.ok) {
       if (response.status === 400) return setError(response.data.error);
@@ -35,8 +36,8 @@ const RegisterScreen = () => {
 
     //proceed to login
     const { data: authToken } = await authApi.request(
-      form.email,
-      form.password
+      values.email,
+      values.password
     );
 
     login(authToken);
@@ -48,7 +49,7 @@ const RegisterScreen = () => {
       <SafeView padding>
         <Form
           validationSchema={validationSchema}
-          initialValues={validationSchema.default()}
+          initialValues={initialValues}
           onSubmit={handleSubmit}
         >
           <FormField name="name" icon="account" placeholder="Name" />

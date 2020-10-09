@@ -1,4 +1,4 @@
-import { ListingEditType } from "../models/listing";
+import { Listing, ListingEditType } from "../models/listing";
 
 enum routes {
   WELCOME = "WELCOME",
@@ -19,7 +19,7 @@ export type RootStackParamList = {
   LOGIN: undefined;
   REGISTER: undefined;
   LISTING: { sort: "latest" | "top" } | undefined;
-  LISTING_DETAILS: ListingEditType;
+  LISTING_DETAILS: Listing;
   LISTING_EDIT: { id?: number };
   ACCOUNT: undefined;
   MESSAGES: undefined;

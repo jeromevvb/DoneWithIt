@@ -16,7 +16,7 @@ const getListings = () => client.get(endpoint);
 // ‘images’, {  name: ‘unique name’,  type: ‘image/jpeg’, uri: ‘uri of the image on the device’ };
 
 const postListing = async (
-  { form, location }: { form: FormikValues; location: UseLocationType },
+  { form, location }: { form: ListingEditType; location: UseLocationType },
   onUploadProgress: (progress: number) => void
 ) => {
   const data = new FormData();
@@ -29,7 +29,7 @@ const postListing = async (
     data.append("location", JSON.stringify(location));
   }
 
-  form.images.forEach((value: string, i: number) => {
+  form.images.forEach((value, i) => {
     const formDataImage = {
       name: `image-${i}`,
       type: "image/jpeg",

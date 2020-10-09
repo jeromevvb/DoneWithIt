@@ -3,7 +3,6 @@ import { View, StyleSheet } from "react-native";
 import Text from "../components/Text";
 import { ListItem } from "../components/lists";
 import CachedImage from "../components/CachedImage";
-import colors from "../config/colors";
 import routes, { RootStackParamList } from "../navigation/routes";
 import { RouteProp } from "@react-navigation/native";
 
@@ -27,6 +26,7 @@ const ListingDetailsScreen: React.FC<ListingDetailsScreenProps> = ({
       <View style={styles.content}>
         <Text>{listing.title}</Text>
         <Text color="secondary">${listing.price}</Text>
+        <Text style={styles.description}>{listing.description}</Text>
         <View style={styles.userContainer}>
           <ListItem
             avatar={require("../assets/avatar.jpg")}
@@ -47,11 +47,14 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   userContainer: {
-    marginVertical: 40,
+    marginTop: 10,
   },
   image: {
     height: 300,
     width: "100%",
+  },
+  description: {
+    marginVertical: 20,
   },
 });
 
