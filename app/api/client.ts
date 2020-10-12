@@ -16,8 +16,8 @@ client.addAsyncRequestTransform(async (request) => {
 });
 
 client.addAsyncResponseTransform(async (response) => {
-  const method = response.config?.method as string;
-  const url = response.config?.url as string;
+  const method = response.config?.method;
+  const url = <string>response.config?.url;
 
   if (method === "get") {
     // cache data
