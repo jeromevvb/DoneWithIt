@@ -11,15 +11,21 @@ import colors, { ColorsType } from "../config/colors";
 interface ButtonProps {
   title: string;
   color?: ColorsType;
+  disabled?: boolean;
   onPress(event: GestureResponderEvent): void;
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { title, onPress, color = "primary" } = props;
+  const { title, onPress, disabled = false, color = "primary" } = props;
 
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor: colors[color] }]}
+      disabled={disabled}
+      style={[
+        styles.button,
+        { backgroundColor: colors[color] },
+        { opacity: disabled ? 0.5 : 1 },
+      ]}
       onPress={onPress}
     >
       <Text style={styles.text}>{title}</Text>

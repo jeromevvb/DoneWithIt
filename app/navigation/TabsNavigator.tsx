@@ -10,10 +10,13 @@ import ListingNavigator from "./ListingNavigator";
 import NewListingButton from "./NewListingButton";
 import { RootStackParamList } from "./routes";
 import routes from "./routes";
+import useNotifications from "../hooks/useNotifications";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const TabsNavigator = () => {
+  useNotifications();
+
   return (
     <Tab.Navigator
       tabBarOptions={{

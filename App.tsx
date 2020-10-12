@@ -8,10 +8,10 @@ import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/contexts/auth";
 import authStorage from "./app/utils/authStorage";
 import { AppLoading } from "expo";
-import { UserType } from "./app/models/user";
+import { User } from "./app/models/user";
 
 export default function App() {
-  const [user, setUser] = useState<UserType | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   const restoreUser = async () => {

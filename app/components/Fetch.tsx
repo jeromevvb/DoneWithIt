@@ -8,7 +8,7 @@ import Text from "./Text";
 
 interface FetchProps {
   children(data: any): JSX.Element;
-  apiRequest(): ApiResponse<any>;
+  apiRequest(): Promise<ApiResponse<any>>;
 }
 
 const Fetch: React.FC<FetchProps> = ({ children, apiRequest }) => {

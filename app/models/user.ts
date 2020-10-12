@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export type UserType = { name: string; email: string; id: number };
+export type User = { name: string; email: string; id: number };
 
 export const UserRegistrationSchema = Yup.object()
   .shape({
@@ -11,12 +11,3 @@ export const UserRegistrationSchema = Yup.object()
   .required();
 
 export type UserRegistrationType = Yup.InferType<typeof UserRegistrationSchema>;
-
-// export const LoginCredentialsSchema = yup
-//     .object()
-//     .shape({
-//         email: yup.string().email().ensure().required(),
-//         password: yup.string().min(3).ensure().required(),
-//     })
-//     .required();
-// export type LoginCredentials = yup.InferType<typeof LoginCredentialsSchema>;

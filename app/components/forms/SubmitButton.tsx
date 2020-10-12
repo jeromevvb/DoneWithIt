@@ -5,10 +5,10 @@ import Button from "../Button";
 
 const SubmitButton: React.FC<{
   title: string;
-}> = ({ title }) => {
+}> = ({ title, ...rest }) => {
   const { handleSubmit } = useFormikContext();
 
-  return <Button title={title} onPress={() => handleSubmit()} />;
+  return <Button {...rest} title={title} onPress={() => handleSubmit()} />;
 };
 
 export default SubmitButton;
