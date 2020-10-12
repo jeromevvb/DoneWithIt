@@ -1,9 +1,10 @@
 import { create } from "apisauce";
+import env from "../config/env";
 import authStorage from "../utils/authStorage";
 import cache from "../utils/cache";
 
 const client = create({
-  baseURL: "http://localhost:9000/api",
+  baseURL: env.apiUrl,
 });
 
 client.addAsyncRequestTransform(async (request) => {
