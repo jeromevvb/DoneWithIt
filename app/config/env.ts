@@ -2,17 +2,17 @@ import Constants from "expo-constants";
 
 const env = {
   dev: {
-    apiUrl: "http://localhost:9000/api",
+    apiUrl: "https://dev-jeromevvb-donewithit.loca.lt/api",
   },
   staging: {
-    apiUrl: "http://localhost:9000/api",
+    apiUrl: "https://stating.com/api",
   },
   prod: {
-    apiUrl: "http://localhost:9000/api",
-  },
+    apiUrl: "https://prod.com/api",
+  }, 
 };
 
-const getCurrentEnv = () => {
+const getCurrentEnv = () => { 
   if (__DEV__) return env.dev;
   if (Constants.manifest.releaseChannel === "staging") return env.staging;
   return env.prod;
