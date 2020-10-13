@@ -5,10 +5,15 @@ import Button from "../Button";
 
 const SubmitButton: React.FC<{
   title: string;
-}> = ({ title, ...rest }) => {
-  const { handleSubmit } = useFormikContext();
+  disabledIfInvalid?: boolean;
+}> = ({ title, disabledIfInvalid = false }) => {
+  const { handleSubmit, isValid, dirty } = useFormikContext();
 
-  return <Button {...rest} title={title} onPress={() => handleSubmit()} />;
+  const disabled = disabledIfInvalid ? !isValid || !dirty : false;
+
+  return (
+    <Button disabled={disabled} title={title} onPress={() => handleSubmit()} />
+  );
 };
 
 export default SubmitButton;

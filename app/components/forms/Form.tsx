@@ -28,6 +28,7 @@ const AppForm = function <Values>(
       validationSchema={validationSchema}
       initialValues={initialValues}
       onSubmit={onSubmit}
+      validateOnMount={true}
     >
       {() => children}
     </Formik>
