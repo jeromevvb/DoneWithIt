@@ -11,7 +11,9 @@ export const ListingEditSchema = Yup.object()
     price: Yup.number().required().min(1).max(10000).label("Price"),
     category: Yup.object({ label: Yup.string(), value: Yup.number() })
       .required()
-      .label("Category"),
+      .label("Category")
+      .nullable(true)
+      .default(null),
     description: Yup.string().required().min(10).label("Description"),
   })
   .required();

@@ -18,7 +18,7 @@ export interface PickerProps {
   numberOfColumns?: number;
   PickerItemComponent?: React.ComponentType<any>;
   onSelectItem?(item: PickerItemProps): void;
-  selectedItem?: PickerItemProps;
+  selectedItem?: PickerItemProps | null;
   placeholder: string;
 }
 
