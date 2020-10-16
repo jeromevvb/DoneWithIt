@@ -2,7 +2,7 @@ import Constants from "expo-constants";
 
 const env = {
   dev: {
-    apiUrl: "https://dev-jeromevvb-donewithit.loca.lt/api",
+    apiUrl: "https://192.168.1.23:9000/api",
   },
   staging: {
     apiUrl: "https://stating.com/api",

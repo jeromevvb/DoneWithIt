@@ -14,3 +14,7 @@ yarn start
 ```
 
 This command will start server as well.
+
+## Configuration
+
+Please replace the Api URL located in app/config/env.ts and server/config/development.json
