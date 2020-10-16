@@ -6,7 +6,7 @@ import Card from "../components/Card";
 import Fetch from "../components/Fetch";
 import SafeView from "../components/SafeView";
 import colors from "../config/colors";
-import { ListingEditType } from "../models/listing";
+import { Listing, ListingEditType } from "../models/listing";
 import routes, { RootStackParamList } from "../navigation/routes";
 
 interface ListingScreenProps {
@@ -14,16 +14,18 @@ interface ListingScreenProps {
 }
 
 const ListingScreen: React.FC<ListingScreenProps> = ({ navigation }) => {
-  const handlePress = (item: ListingEditType) => {
+  const handlePress = (item: Listing) => {
     navigation.navigate(routes.LISTING_DETAILS, item);
   };
 
   return (
     <Fetch apiRequest={listingsApi.getListings}>
-      {(data) => (
+      {({ data, request, loading }) => (
         <SafeView padding bgColor={colors.light}>
           <FlatList
             data={data}
+            refreshing={loading}
+            onRefresh={request}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <View key={item.id} style={styles.container}>

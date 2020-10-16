@@ -27,11 +27,12 @@ const Fetch: React.FC<FetchProps> = ({ children, apiRequest }) => {
     );
   }
 
-  if (loading) {
+  // first loading
+  if (loading && !data) {
     return <ActivityIndicator visible />;
   }
 
-  return children(data);
+  return children({ data, request, loading });
 };
 
 const styles = StyleSheet.create({

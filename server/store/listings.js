@@ -106,7 +106,7 @@ const listings = [
 
 const addListing = (listing) => {
   listing.id = listings.length + 1;
-  listings.push(listing);
+  listings.unshift(listing);
 };
 
 const getListings = () => listings;
