@@ -11,11 +11,18 @@ import NewListingButton from "./NewListingButton";
 import { RootStackParamList } from "./routes";
 import routes from "./routes";
 import useNotifications from "../hooks/useNotifications";
+import rootNavigation from "./rootNavigation";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const TabsNavigator = () => {
-  useNotifications();
+  useNotifications((notification) => {
+    const type = notification.data?.type;
+
+    if (type === "NEW_MESSAGE" && notification.origin === "received") {
+      rootNavigation.navigate(routes.ACCOUNT);
+    }
+  });
 
   return (
     <Tab.Navigator

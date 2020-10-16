@@ -11,8 +11,9 @@ const OfflineNotice = () => {
   if (
     netInfo.type === NetInfoStateType.unknown ||
     netInfo.isInternetReachable === true
-  )
+  ) {
     return null;
+  }
 
   return (
     <View style={styles.container}>

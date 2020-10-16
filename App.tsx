@@ -9,6 +9,7 @@ import AuthContext from "./app/contexts/auth";
 import authStorage from "./app/utils/authStorage";
 import { AppLoading } from "expo";
 import { User } from "./app/models/user";
+import rootNavigation from "./app/navigation/rootNavigation";
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -27,7 +28,10 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer
+        ref={rootNavigation.navigationRef}
+        theme={navigationTheme}
+      >
         {user ? <TabsNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>
