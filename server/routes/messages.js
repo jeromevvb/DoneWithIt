@@ -4,6 +4,7 @@ const Joi = require("joi");
 const { Expo } = require("expo-server-sdk");
 
 const usersStore = require("../store/users");
+const listingStores = require("../store/listings");
 const listingsStore = require("../store/listings");
 const messagesStore = require("../store/messages");
 const sendPushNotification = require("../utilities/pushNotifications");
@@ -20,12 +21,16 @@ router.get("/", auth, (req, res) => {
 
   const mapUser = (userId) => {
     const user = usersStore.getUserById(userId);
-    return { id: user.id, name: user.name };
+    return { id: user.id, name: user.name, email: user.email };
+  };
+
+  const mapListing = (listingId) => {
+    return listingStores.getListing(listingId);
   };
 
   const resources = messages.map((message) => ({
     id: message.id,
-    listingId: message.listingId,
+    listing: mapListing(message.listingId),
     dateTime: message.dateTime,
     content: message.content,
     fromUser: mapUser(message.fromUserId),
@@ -34,6 +39,8 @@ router.get("/", auth, (req, res) => {
 
   res.send(resources);
 });
+
+router.delete("/:id", auth, (req, res) => {});
 
 router.post("/", [auth, validateWith(schema)], async (req, res) => {
   const { listingId, message } = req.body;
@@ -54,7 +61,7 @@ router.post("/", [auth, validateWith(schema)], async (req, res) => {
   const { expoPushToken } = targetUser;
 
   if (Expo.isExpoPushToken(expoPushToken))
-    await sendPushNotification(expoPushToken, message);
+    await sendPushNotification(expoPushToken, message, { type: "NEW_MESSAGE" });
 
   res.status(201).send();
 });
