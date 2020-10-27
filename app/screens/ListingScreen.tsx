@@ -21,7 +21,7 @@ const ListingScreen: React.FC<ListingScreenProps> = ({ navigation }) => {
   return (
     <Fetch apiRequest={listingsApi.getListings}>
       {({ data, request, loading }) => (
-        <SafeView padding bgColor={colors.light}>
+        <SafeView bgColor={colors.light}>
           <FlatList
             data={data}
             refreshing={loading}
@@ -47,6 +47,7 @@ const ListingScreen: React.FC<ListingScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
+    paddingHorizontal: 15,
   },
 });
 

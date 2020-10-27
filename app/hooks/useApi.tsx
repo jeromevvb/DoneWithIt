@@ -1,17 +1,16 @@
 import { ApiResponse } from "apisauce";
 import React, { useState } from "react";
 
-
 interface ResponseProps {
-  data:any,
-  loading:boolean,
-  error:boolean,
-  request(...args: any[]):Promise<ApiResponse<any>>
-} 
+  data: any;
+  loading: boolean;
+  error: boolean;
+  request(...args: any[]): Promise<ApiResponse<any>>;
+}
 
 type Props = (...args: any[]) => Promise<ApiResponse<any>>;
 
-const useApi = (apiRequest: Props):ResponseProps => {
+const useApi = (apiRequest: Props): ResponseProps => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -25,6 +24,7 @@ const useApi = (apiRequest: Props):ResponseProps => {
 
     setError(!response.ok);
     setData(response.data);
+    console.log(response);
 
     return response;
   };

@@ -8,6 +8,8 @@ const endpoint = "/listings";
 
 const getListings = () => client.get(endpoint);
 
+const getMyListings = () => client.get(`${endpoint}/user`);
+
 // -title
 // -price
 // -categoryId
@@ -49,4 +51,5 @@ const postListing = async (
 export default {
   getListings,
   postListing,
+  getMyListings,
 };

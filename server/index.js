@@ -21,14 +21,15 @@ app.use(compression());
 app.use("/api/categories", categories);
 app.use("/api/listing", listing);
 app.use("/api/listings", listings);
+app.use("/api/listings/user", listings);
 app.use("/api/user", user);
 app.use("/api/users", users);
 app.use("/api/auth", auth);
-app.use("/api/my", my);
+// app.use("/api/my", my);
 app.use("/api/expoPushTokens", expoPushTokens);
 app.use("/api/messages", messages);
 
 const port = process.env.PORT || config.get("port");
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`Server started on port ${port}...`);
 });

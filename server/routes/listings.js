@@ -41,6 +41,14 @@ router.get("/", (req, res) => {
   res.send(resources);
 });
 
+router.get("user", auth, (req, res) => {
+  const listings = store.filterListings(
+    (listing) => listing.userId === req.user.userId
+  );
+  const resources = listings.map(listingMapper);
+  res.send(resources);
+});
+
 router.post(
   "/",
   [

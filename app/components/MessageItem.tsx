@@ -14,8 +14,6 @@ const MessageItem: React.FC<MessageItemProps> = ({
   onPress,
   onDelete,
 }) => {
-  console.log(message);
-
   return (
     <ListItem
       title={message.fromUser.name}
